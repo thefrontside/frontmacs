@@ -5,7 +5,11 @@
 ;; Maintainer: Frontside <admin@frontside.io>
 ;; Keywords: emacs
 
-;;;###autoload
-(message "hello WORLD. BOOOM!")
+;;; Commentary:
 
+;;; Code:
+
+(message "Hello World")
+
+(provide 'frontmacs)
 ;;; frontmacs.el ends here

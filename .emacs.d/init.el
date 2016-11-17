@@ -23,4 +23,5 @@
 ;;; (quelpa '(frontmacs :fetcher url :url "file:///Users/robertdeluca/Projects/frontmacs/frontmacs.el" ))
 (quelpa '(frontmacs :fetcher github :repo "thefrontside/frontmacs" ))
 
+(require 'frontmacs)
 ;;; init.el ends here

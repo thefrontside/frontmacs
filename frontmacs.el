@@ -6,6 +6,6 @@
 ;; Keywords: emacs
 
 ;;;###autoload
-(message "hello world")
+(message "hello WORLD. BOOOM!")
 
 ;;; frontmacs.el ends here

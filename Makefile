@@ -4,4 +4,4 @@ clean:
 	rm -rf .emacs.d/quelpa
 
 runlocal: clean
-	HOME=`pwd` emacs
+	HOME=`pwd` emacs -nw

@@ -1,6 +1,2 @@
-.emacs.d/quelpa
-.emacs.d/elpa
-.emacs.d/personal
-.emacs.d/auto-save-list
-.gnupg
 *~
+build/

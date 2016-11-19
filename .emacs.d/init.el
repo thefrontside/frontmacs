@@ -20,8 +20,10 @@
     (url-insert-file-contents "https://raw.github.com/quelpa/quelpa/master/bootstrap.el")
     (eval-buffer)))
 
-;;; (quelpa '(frontmacs :fetcher url :url "file:///Users/robertdeluca/Projects/frontmacs/frontmacs.el" ))
-(quelpa '(frontmacs :fetcher github :repo "thefrontside/frontmacs" ))
+(if (getenv "FRONTMACS_RUNLOCAL")
+    (quelpa '(frontmacs :fetcher file :path "~/../lib" ))
+  (quelpa '(frontmacs :fetcher github :repo "thefrontside/frontmacs" )))
+
 
 (require 'frontmacs)
 ;;; init.el ends here

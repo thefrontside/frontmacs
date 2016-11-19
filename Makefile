@@ -1,7 +1,10 @@
+build:
+	mkdir -p build/home
+	mkdir -p build/lib
+	cp -r .emacs.d build/home
+	cp *.el build/lib
 clean:
-	rm -rf .emacs.d/elpa
-	rm -rf .emacs.d/smex-items
-	rm -rf .emacs.d/quelpa
+	rm -rf build
 
-runlocal: clean
-	HOME=`pwd` emacs -nw
+runlocal: build
+	FRONTMACS_RUNLOCAL=true HOME=`pwd`/build/home emacs -nw

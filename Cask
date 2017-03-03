@@ -4,6 +4,7 @@
 (package "frontmacs" "0.1.1" "Frontside config package for emacs")
 
 (depends-on "projectile")
+(depends-on "swiper")
 
 (development
  (depends-on "f")

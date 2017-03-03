@@ -1,4 +1,3 @@
-(require 'ivy)
 (require 'swiper)
 
 (ivy-mode 1)

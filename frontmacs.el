@@ -5,5 +5,6 @@
 ;;; Code:
 (require 'frontmacs-projectile)
 (require 'frontmacs-completion)
+(require 'frontmacs-vcs)
 (provide 'frontmacs)
 ;;; frontmacs.el ends here

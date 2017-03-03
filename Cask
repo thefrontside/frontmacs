@@ -5,6 +5,7 @@
 
 (depends-on "projectile")
 (depends-on "swiper")
+(depends-on "magit")
 
 (development
  (depends-on "f")

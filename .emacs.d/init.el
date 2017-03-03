@@ -2,28 +2,17 @@
 ;;; Commentary:
 ;; Frontmacs is a frontside shared config for Emacs as a package
 
-(setq custom-file (expand-file-name "personal/custom.el" user-emacs-directory ))
-
 ;; Require Emacs' package functionality
 (require 'package)
 
 ;;; Code:
 
-;; Add the Melpa repository to the list of package sources
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(when (getenv "FRONTMACS_RUNLOCAL")
+  (add-to-list 'load-path default-directory))
 
 ;; Initialise the package system.
 (package-initialize)
 
-(unless (require 'quelpa nil t)
-  (with-temp-buffer
-    (url-insert-file-contents "https://raw.github.com/quelpa/quelpa/master/bootstrap.el")
-    (eval-buffer)))
-
-(if (getenv "FRONTMACS_RUNLOCAL")
-    (quelpa '(frontmacs :fetcher file :path "~/../lib" ))
-  (quelpa '(frontmacs :fetcher github :repo "thefrontside/frontmacs" )))
-
-
 (require 'frontmacs)
+
 ;;; init.el ends here

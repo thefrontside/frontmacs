@@ -25,5 +25,5 @@ install:
 script:
   # Run your tests
   # - cask exec ert-runner
-  cask package
-  ls dist
+  - cask package
+  - ls dist

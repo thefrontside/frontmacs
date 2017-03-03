@@ -38,3 +38,4 @@ deploy:
   local_dir: dist/packages
   on:
     branch: master
+    condition: $EMACS_VERSION = 25.1

@@ -23,7 +23,18 @@ install:
   # Install your dependencies
   - cask install
 script:
-  # Run your tests
+  # Run tests here
   # - cask exec ert-runner
-  - cask package
-  - ls dist
+  - make archive
+
+deploy:
+  provider: s3
+  access_key_id: AKIAJT22SMUBIRR3MNZQ
+  secret_access_key:
+    secure: m/xPPvLok5fO8ourtA6ZfsWT+I4mEhiVEq9bn13Ze53G215bdjaY1kp2c+BBt8NSi0vB+sHv4M27ygvVmm7cOPOgaBCZzIcptwDpJqmZHkFUrE1DwfvYMdXlQL3C3EqQiPPvfNCVgstNKqN2BZfXGTIKEzzPHFRxCPSOBRoF2StxllF181YzBFcTycjs35hFiWy3Bh6n4W11Zm9wexw2ZhAQ25jK5MGOVt5rdwaD5WKd50L3JU170MS+1SIWqIB7JpKwXGHigPk64RdvV5S1P3SMk2zaYL2BuGUwAhsNkKsmsk84iiUZGiqJ8D4/DSxnB8QdKgBNA5ba0xbuKlbqfhSXQIs2a+4HvDur+wQA4Qrqkfu4DAzjgMlcnnNmY+SUGX/OvNfA6Sfno3vWWqh1uP4gtyBS+/9niqhjfPeez8v7VlM0Lp0Z7cQ2CAkCscWzq9BQg+QnWPNnwOba33scGu9cQgzKj9pVQZ+N+AR8lGHzVvUkTAj3Q3s2duRPZdLnOkzw1EL5EtovZ+s9JVsuGyGnkNrryKj+LTQwBOAP72p5MVoRRr4MjTjEI3jH0iDymjKqCJsjhstsQszL+I+plmWyoZgdYUGGKEbmNbVaDdcDF+//UUvWjKmIbuVOYt0O2+OfZYLcbxK4OCOPJWJRymHEcZEFFuqX5wj8Xbijmow=
+  bucket: elpa.frontside.io
+  region: us-east-2
+  skip_cleanup: true
+  local_dir: dist/packages
+  on:
+    branch: master

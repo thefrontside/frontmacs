@@ -3,8 +3,6 @@
 ;;; Commentary:
 
 ;;; Code:
-
-(message "Hello World")
-
+(require 'frontmacs-projectile)
 (provide 'frontmacs)
 ;;; frontmacs.el ends here

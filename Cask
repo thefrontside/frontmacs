@@ -1,9 +1,9 @@
 (source gnu)
 (source melpa)
 
-(package "frontmacs" "0.1.0" "Frontside config package for emacs")
+(package "frontmacs" "0.1.1" "Frontside config package for emacs")
 
-(depends-on "smart-mode-line")
+(depends-on "projectile")
 
 (development
  (depends-on "f")

@@ -14,6 +14,6 @@ clean:
 	rm -rf dist
 
 runlocal: build
-	FRONTMACS_RUNLOCAL=true HOME=`pwd`/build/home emacs -nw
+	FRONTMACS_RUNLOCAL=true HOME=`pwd`/build/home cask emacs
 
 archive: build/packages/archive-contents

@@ -1,11 +1,7 @@
 (source gnu)
 (source melpa)
 
-(package "frontmacs" "0.1.1" "Frontside config package for emacs")
-
-(depends-on "projectile")
-(depends-on "swiper")
-(depends-on "magit")
+(package-descriptor "frontmacs-pkg.el")
 
 (development
  (depends-on "f")

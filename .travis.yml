@@ -20,8 +20,8 @@ before_install:
   # currently override cask to point to forked version that supports
   # package manifests. https://github.com/cask/cask/pull/383
   - echo "Install Cask"
-  - git clone -b specify-package-descriptor --depth=1 https://github.com/cowboyd/cask.git "$(HOME)/.cask"
-  - ln -s "$(HOME)/.cask/bin/cask" "$(HOME)/bin/cask"
+  - git clone -b specify-package-descriptor --depth=1 https://github.com/cowboyd/cask.git $HOME/.cask
+  - ln -s $HOME/.cask/bin/cask $HOME/bin/cask
   # - make -f emacs-travis.mk install_cask
 
   # Install Texinfo, if you need to build info manuals for your project

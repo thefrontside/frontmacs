@@ -15,11 +15,35 @@
 ;;; your init file.
 ;;; Code:
 (require 'package)
+(require 'tls)
+
 
 (package-initialize)
 
 (add-to-list 'package-archives
              '("melpa-stable" . "https://melpa-stable.milkbox.net/packages/") t)
+
+
+;; It turns out that the way package.el connects to the server, it
+;; doesn't send the servername by default. Apparently sending the
+;; server you're trying to connect to is called SNI (Server Name
+;; Indication). And it's a way to get around having a static IP
+;; associated with an SSL certificate. This extends the list of
+;; commands to pass the `-servername' option to openssl. So whereas it
+;; would try:
+;;
+;;   openssl s_client -connect elpa.frontside.io:443 -no_ssl2 -ign_eof
+;;
+;; now it will also try
+;;
+;;   openssl s_client -connect elpa.frontside.io:443 -no_ssl2 -ign_eof -servername elpa.frontside.io
+;;
+;; In order to not do this, we have to pay Amazon $600/month for the
+;; privilege of a static IP address. We laughed at the idea when
+;; setting up the archive, but little did we know it would come back
+;; to haunt us!!
+(add-to-list 'tls-program "openssl s_client -connect %h:%p -no_ssl2 -ign_eof -servername %h" t)
+
 
 ;; add the frontside package archive to the list, but allow it to be
 ;; overridden with the FRONTMACS_ARCHIVE variable. This allows us to

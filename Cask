@@ -1,5 +1,5 @@
 (source gnu)
-(source melpa)
+(source melpa-stable)
 
 (package-descriptor "frontmacs-pkg.el")
 

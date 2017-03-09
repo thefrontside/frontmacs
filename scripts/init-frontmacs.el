@@ -18,6 +18,9 @@
 
 (package-initialize)
 
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://melpa-stable.milkbox.net/packages/") t)
+
 ;; add the frontside package archive to the list, but allow it to be
 ;; overridden with the FRONTMACS_ARCHIVE variable. This allows us to
 ;; point to a local directory in development.

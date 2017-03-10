@@ -23,3 +23,8 @@ runlocal: build archive
 	FRONTMACS_ARCHIVE=`pwd`/dist/packages/ HOME=`pwd`/build/home cask emacs -nw
 
 archive: build/packages/archive-contents
+
+# Make sure that running the init-frontmacs.el script actually
+# downloads everything off of the internet
+init-test: build archive
+	FRONTMACS_ARCHIVE=`pwd`/dist/packages/ HOME=`pwd`/build/home emacs -Q --batch --no-init-file --script scripts/init-frontmacs.el

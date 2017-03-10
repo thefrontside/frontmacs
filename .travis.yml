@@ -30,8 +30,12 @@ install:
   # Install your dependencies
   - cask install
 script:
-  # Run tests here
+  # make sure that the `init-frontmacs.el` can load all dependencies
+  # off the network and boot up succesfull
+  - make init-test
+  # run individual tests
   - cask exec ert-runner
+  # build the archive for uploading to elpa.frontside.io
   - make archive
 
 deploy:

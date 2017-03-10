@@ -63,6 +63,21 @@ _decoupled_ from git and so you are now free to maintain your own
 customizations in your own repository without fear of conflicting with
 the main distribution.
 
+### Acceptance Tested
+
+Most of the planet doesn't treat editor configuration as software. We
+do.
+
+Whenever you integrate a bunch of different packages from across the
+internet, you're bound to run into conflicts over things like
+key-bindings, or function advise.
+
+Making changes to an editing experience shared by many people is a
+responsibility we take very seriously. That's why Frontmacs makes sure
+that critical behaviors are tested so that you won't get bad upgrades
+that ruin your day. If you do, you can run the test suite to find out
+exactly what went wrong and where.
+
 ## Installation
 
 Download the bootstrap script into your following into your emacs directory

@@ -1,5 +1,8 @@
 # Frontmacs
 
+![ELPA Version](/elpa.svg?raw=true "ELPA Version")
+[![Build Status](https://travis-ci.org/thefrontside/frontmacs.svg?branch=master)](https://travis-ci.org/thefrontside/frontmacs)
+
 A _package-based_, web-centric, customizable, awesome-by-default,
 acceptance-tested Emacs distribution curated by your friends at
 [Frontside][frontside].

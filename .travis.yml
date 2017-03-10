@@ -31,7 +31,7 @@ install:
   - cask install
 script:
   # Run tests here
-  # - cask exec ert-runner
+  - cask exec ert-runner
   - make archive
 
 deploy:

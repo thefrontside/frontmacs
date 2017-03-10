@@ -3,13 +3,14 @@
 ;;;
 ;;; Frontmacs provides a lot of nice customizations, but there needs
 ;;; to be a bootstrap process by which to actually get it
-;;; running. This is that bootstrap. The idea is that you just need to
+;;; running.  This is that bootstrap.  The idea is that you just need to
 ;;; load this script inside your `init.el` and it will take care of
 ;;; adding the frontside package archive to your package config, and
-;;; then also installing it if it is not installed. E.g.
+;;; then also installing it if it is not installed.
 ;;;
 ;;; --- init.el
-;;;   (load "init-frontmacs.el")
+;;;   ;; boot frontmacs
+;;;   (load (expand-file-name "init-frontmacs.el" user-emacs-directory))
 ;;;
 ;;; In fact, it might need to be the only line you'll ever need in
 ;;; your init file.

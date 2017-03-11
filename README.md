@@ -1,6 +1,6 @@
 # Frontmacs
 
-[![ELPA Version](https://cdn.rawgit.com/thefrontside/frontmacs/master/elpa.svg)](http://elpa.frontside.io/archive-contents)
+[![ELPA Version](https://cdn.rawgit.com/thefrontside/frontmacs/master/elpa.svg?raw=true)](http://elpa.frontside.io/archive-contents)
 [![Build Status](https://travis-ci.org/thefrontside/frontmacs.svg?branch=master)](https://travis-ci.org/thefrontside/frontmacs)
 
 A _package-based_, web-centric, customizable, awesome-by-default,

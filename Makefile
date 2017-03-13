@@ -2,7 +2,7 @@
 # `scripts/init-frontmacs.el` as the initialization script
 build:
 	mkdir -p build/home/.emacs.d
-	ln -s `pwd`/scripts/init-frontmacs.el `pwd`/build/home/.emacs.d/init.el
+	echo "(load (expand-file-name \"../../../scripts/init-frontmacs.el\" user-emacs-directory))" > `pwd`/build/home/.emacs.d/init.el
 
 build/packages/archive-contents:
 	cask package

@@ -3,6 +3,7 @@
 ;;; Commentary:
 
 ;;; Code:
+(require 'frontmacs-system)
 (require 'frontmacs-projectile)
 (require 'frontmacs-completion)
 (require 'frontmacs-vcs)

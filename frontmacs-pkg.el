@@ -2,7 +2,8 @@
 (define-package "frontmacs" "0.1.1" "Frontside config package for emacs"
   '((magit "2.8.0")
     (swiper "0.7.0")
-    (projectile "0.13.0"))
+    (projectile "0.13.0")
+    (exec-path-from-shell "1.11"))
 
   :keywords '("emacs" "awesome" "starterkit")
 

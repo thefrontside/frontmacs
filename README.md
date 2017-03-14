@@ -99,6 +99,39 @@ add the following lines to the top of your `init.el`:
 
 Restart your Emacs and away you go!
 
+## Configuration
+
+Frontmacs will create several files and directories in your Emacs
+directory (usually `$HOME/.emacs.d`) to help with configuration and
+initialization. The first is `config.el` This file is loaded _before_
+Frontmacs actually initializes, and so it's a chance to set any
+well defined customizations. But don't worry, Frontmacs will generate
+this file for you so that you can see what all configuration variables
+are available.
+
+For everything else, there is all of the files contained in
+`$HOME/.emacs.d/initializers`. Every elisp file contained in this
+directory will be evaluated _after_ Frontmacs has been fully
+configured and initialized, so settings made in these files will
+override anything that comes with Frontmacs out of the box. For
+example, you can create your Ruby configuration with a file called:
+
+`$HOME/.emacs.d/initializers/ruby.el`
+
+``` emacs-lisp
+(eval-after-load 'rspec-mode
+  '(rspec-install-snippets))
+
+(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
+```
+
+Just drop any `.el` file into the `initializers/` directory, and
+Frontmacs will evaluate it.
+
+> Note: When in doubt about whether you should put something in `config.el` or a
+> custom initializer, use an initializer.
+
 ## Development
 
 You will need a patched version of `Cask` to do development on.

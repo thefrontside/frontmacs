@@ -29,5 +29,9 @@
     ;; load it!
     (load-theme frontmacs-theme t)))
 
+
+(require 'page-break-lines)
+(global-page-break-lines-mode)
+
 (provide 'frontmacs-style)
 ;;; frontmacs-style.el ends here

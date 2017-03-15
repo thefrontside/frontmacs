@@ -1,9 +1,11 @@
 ;; -*- eval: (flycheck-mode -1) -*-
 (define-package "frontmacs" "0.1.2" "Frontside config package for emacs"
-  '((magit "2.8.0")
+  '((f "0.19.0")
+    (magit "2.8.0")
     (swiper "0.7.0")
     (projectile "0.13.0")
-    (exec-path-from-shell "1.11"))
+    (exec-path-from-shell "1.11")
+    (page-break-lines "0.11"))
 
   :keywords '("emacs" "awesome" "starterkit")
 

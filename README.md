@@ -93,8 +93,8 @@ $ wget https://raw.githubusercontent.com/thefrontside/frontmacs/master/scripts/i
 add the following lines to the top of your `init.el`:
 
 ``` emacs-lisp
-;;;   ;; boot frontmacs
-;;;   (load (expand-file-name "init-frontmacs.el" user-emacs-directory))
+;; boot frontmacs
+(load (expand-file-name "init-frontmacs.el" user-emacs-directory))
 ```
 
 Restart your Emacs and away you go!

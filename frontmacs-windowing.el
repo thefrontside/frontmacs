@@ -39,8 +39,9 @@ new windows will each be 180 columns wide, and sit just below the threshold.
 ;; highlight the current line number
 (hlinum-activate)
 (setq linum-format " %3d ")
-;; turn on line numbers globally
-(global-linum-mode t)
+
+;; turn on line numbers in prog-mode
+(add-hook 'prog-mode-hook 'linum-mode)
 
 ;; disable window-system in terminal mode
 (unless window-system

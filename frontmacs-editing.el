@@ -7,6 +7,7 @@
 ;; Behaviors for when you edit things.
 
 ;;; Code:
+(require 'undo-tree)
 
 ;; Death to the tabs indeed!
 ;; https://github.com/bbatsov/prelude/blob/master/core/prelude-editor.el#L35-L44
@@ -22,6 +23,9 @@
 
 ;; when you have a selection, typing text replaces it all.
 (delete-selection-mode t)
+
+;; undo visual tree
+(global-undo-tree-mode 1)
 
 ;; remove trailing whitespace when saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

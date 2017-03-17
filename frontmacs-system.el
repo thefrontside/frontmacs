@@ -24,6 +24,10 @@
 ;; warn when opening files bigger than 100MB
 (setq large-file-warning-threshold 100000000)
 
+;; disable the toolbar at the top of the window
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode -1))
+
 ;; OSX specific code
 (when (eq system-type 'darwin)
 

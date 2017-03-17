@@ -15,6 +15,9 @@
     (expand-region "0.11.0")
     (comment-dwim-2 "1.2.2")
     (company "0.9.2")
+    (js2-mode "20170116")
+    (rjsx-mode "0.1.0")
+    (js2-refactor "0.8.0")
     (multiple-cursors "1.4.0")
     (drag-stuff "0.3.0")))
 

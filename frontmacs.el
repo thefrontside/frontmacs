@@ -10,6 +10,8 @@
 (require 'frontmacs-completion)
 (require 'frontmacs-vcs)
 (require 'frontmacs-windowing)
+(require 'frontmacs-editing)
+(require 'frontmacs-keys)
 
 (provide 'frontmacs)
 ;;; frontmacs.el ends here

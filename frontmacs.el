@@ -13,5 +13,8 @@
 (require 'frontmacs-editing)
 (require 'frontmacs-keys)
 
+;; different language modes
+(require 'frontmacs-javascript)
+
 (provide 'frontmacs)
 ;;; frontmacs.el ends here

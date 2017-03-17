@@ -17,6 +17,9 @@
     (company "0.9.2")
     (flycheck "30")
     (diff-hl "1.8.4")
+    (js2-mode "20170116")
+    (rjsx-mode "0.1.0")
+    (js2-refactor "0.8.0")
     (multiple-cursors "1.4.0")
     (drag-stuff "0.3.0")))
 

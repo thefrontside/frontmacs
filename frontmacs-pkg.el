@@ -12,7 +12,9 @@
     (undo-tree "0.6.5")
     (ace-window "0.9.0")
     (expand-region "0.11.0")
+    (comment-dwim-2 "1.2.2")
     (multiple-cursors "1.4.0")
+    (hlinum "20160521.2112")
     (drag-stuff "0.3.0")))
 
   :keywords '("emacs" "awesome" "starterkit")

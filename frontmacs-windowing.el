@@ -1,7 +1,5 @@
-;; Command + Enter to toggle whether the Emacs frame is maximized
-;; Note: does nothing in terminal mode.
-;; TODO: Document this in the readme
-;; (global-set-key (kbd "<s-return>") 'toggle-frame-maximized)
+(require 'hlinum)
+(require 'linum)
 
 ;; Split horizontally when opening a new window from a command
 ;; whenever possible.
@@ -36,6 +34,13 @@ new windows will each be 180 columns wide, and sit just below the threshold.
   (other-window 1 nil)
   (switch-to-next-buffer))
 (global-set-key (kbd "C-x 3") 'frontmacs/hsplit-last-buffer)
+
+;; Line numbers
+;; highlight the current line number
+(hlinum-activate)
+(setq linum-format " %3d ")
+;; turn on line numbers globally
+(global-linum-mode t)
 
 ;; disable window-system in terminal mode
 (unless window-system

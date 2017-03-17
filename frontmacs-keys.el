@@ -14,6 +14,7 @@
 (require 'multiple-cursors)
 (require 'expand-region)
 (require 'ace-window)
+(require 'comment-dwim-2)
 
 ;; Enables the M-up, M-down, M-right, M-left keys in terminal mode.
 (add-hook 'tty-setup-hook
@@ -55,7 +56,8 @@
 (global-set-key (kbd "C-w") 'crux-kill-whole-line)
 
 ;; comment lines out with cmd + /
-(global-set-key (kbd "s-/") 'comment-line)
+(global-set-key (kbd "s-/") 'comment-dwim-2)
+(global-set-key (kbd "C-c /") 'comment-dwim-2)
 
 ;; expand current line into selection
 (global-set-key (kbd "C-=") 'er/expand-region)

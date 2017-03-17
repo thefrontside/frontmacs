@@ -15,6 +15,8 @@
     (expand-region "0.11.0")
     (comment-dwim-2 "1.2.2")
     (company "0.9.2")
+    (flycheck "30")
+    (diff-hl "1.8.4")
     (js2-mode "20170116")
     (rjsx-mode "0.1.0")
     (js2-refactor "0.8.0")

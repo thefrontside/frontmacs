@@ -2,4 +2,4 @@
 
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
-(provide 'frontside-yaml)
+(provide 'frontmacs-yaml)

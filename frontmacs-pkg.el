@@ -23,6 +23,7 @@
     (emmet-mode "1.0.8")
     (smartparens "1.9.0")
     (web-mode "14.1")
+    (yaml-mode "0.0.13")
     (multiple-cursors "1.4.0")
     (drag-stuff "0.3.0")))
 

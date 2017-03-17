@@ -7,8 +7,6 @@
 ;; Behaviors for when you edit things.
 
 ;;; Code:
-(require 'undo-tree)
-(require 'flycheck)
 
 ;; Death to the tabs indeed!
 ;; https://github.com/bbatsov/prelude/blob/master/core/prelude-editor.el#L35-L44
@@ -22,13 +20,19 @@
 ;; always end files with newlines
 (setq require-final-newline t)
 
+;; setup smartparens to auto open and close pairs
+(require 'smartparens-config)
+(smartparens-global-mode 1)
+
 ;; when you have a selection, typing text replaces it all.
 (delete-selection-mode t)
 
 ;; undo visual tree
+(require 'undo-tree)
 (global-undo-tree-mode 1)
 
 ;; setup flycheck to show on the right side of the buffer
+(require 'flycheck)
 (setq flycheck-indication-mode 'right-fringe)
 
 ;; make the flycheck arrow look like a little triagle.

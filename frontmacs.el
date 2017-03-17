@@ -14,6 +14,7 @@
 (require 'frontmacs-keys)
 
 ;; different language modes
+(require 'frontmacs-web)
 (require 'frontmacs-javascript)
 
 (provide 'frontmacs)

@@ -16,8 +16,7 @@
     (comment-dwim-2 "1.2.2")
     (company "0.9.2")
     (flycheck "30")
-    (git-gutter "0.90")
-    (git-gutter-fringe "0.23")
+    (diff-hl "1.8.4")
     (multiple-cursors "1.4.0")
     (drag-stuff "0.3.0")))
 

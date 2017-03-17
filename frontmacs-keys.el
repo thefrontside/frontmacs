@@ -47,18 +47,6 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 
-;; duplicate lines
-(global-set-key (kbd "C-c d") 'crux-duplicate-current-line-or-region)
-
-;; clean up buffer (indent, remove whitespace)
-(global-set-key (kbd "C-c n") 'crux-cleanup-buffer-or-region)
-
-;; rename file
-(global-set-key (kbd "C-c r") 'crux-rename-buffer-and-file)
-
-;; kill whole line
-(global-set-key (kbd "C-w") 'crux-kill-whole-line)
-
 ;; comment lines out with cmd + /
 (global-set-key (kbd "s-/") 'comment-dwim-2)
 (global-set-key (kbd "C-c /") 'comment-dwim-2)
@@ -71,6 +59,32 @@
 
 ;; if there are two open buffers (split window) use cmd + w to switch between
 (global-set-key (kbd "s-w") 'ace-window)
+
+;; crux: https://github.com/bbatsov/crux
+;;
+;;Insert an empty line above the current line and indent it properly.
+(global-set-key (kbd "<C-S-return>") 'crux-smart-open-line-above)
+
+;; Insert an empty line and indent it properly (as in most IDEs).
+(global-set-key [(shift return)] #'crux-smart-open-line)
+
+;; Fix indentation in buffer and strip whitespace.
+(global-set-key (kbd "C-c n") 'crux-cleanup-buffer-or-region)
+
+;; Delete current file and buffer.
+(global-set-key (kbd "C-c D") 'crux-delete-file-and-buffer)
+
+;; Duplicate the current line (or region).
+(global-set-key (kbd "C-c d") 'crux-duplicate-current-line-or-region)
+
+;; Duplicate and comment the current line (or region).
+(global-set-key (kbd "C-c M-d") 'crux-duplicate-and-comment-current-line-or-region)
+
+;; Rename the current buffer and its visiting file if any.
+(global-set-key (kbd "C-c r") 'crux-rename-buffer-and-file)
+
+;; Kill whole line
+(global-set-key (kbd "C-w") 'crux-kill-whole-line)
 
 (provide 'frontmacs-keys)
 

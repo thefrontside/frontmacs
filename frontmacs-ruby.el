@@ -18,4 +18,4 @@
 (add-to-list 'auto-mode-alist '("Berksfile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Appraisals\\'" . ruby-mode))
 
-(provide frontmacs-ruby)
+(provide 'frontmacs-ruby)

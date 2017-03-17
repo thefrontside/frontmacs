@@ -22,9 +22,9 @@
 (package-initialize)
 
 (setq package-archives
-      '(("GNU"     . "http://elpa.gnu.org/packages/")
+      '(("GNU" . "http://elpa.gnu.org/packages/")
         ("MELPA Stable" . "https://stable.melpa.org/packages/")
-        ("MELPA"        . "https://melpa.org/packages/"))
+        ("MELPA" . "https://melpa.org/packages/"))
       package-archive-priorities
       '(("MELPA Stable" . 10)
         ("GNU" . 5)

@@ -24,6 +24,10 @@
              (define-key function-key-map "\e[1;9C" [M-right])
              (define-key function-key-map "\e[1;9D" [M-left])))
 
+
+;; turn on key-chord mode
+(key-chord-mode +1)
+
 ;; set undo to cmd + z
 (global-set-key (kbd "C-z") 'undo)
 
@@ -71,5 +75,3 @@
 (provide 'frontmacs-keys)
 
 ;;; frontmacs-keys.el ends here
-
-

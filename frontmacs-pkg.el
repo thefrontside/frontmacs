@@ -14,6 +14,7 @@
     (ace-window "0.9.0")
     (expand-region "0.11.0")
     (comment-dwim-2 "1.2.2")
+    (company "0.9.2")
     (multiple-cursors "1.4.0")
     (drag-stuff "0.3.0")))
 

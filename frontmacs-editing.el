@@ -23,6 +23,9 @@
 ;; when you have a selection, typing text replaces it all.
 (delete-selection-mode t)
 
+;; remove trailing whitespace when saving
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; backup and autosave files go into the tmp directory
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))

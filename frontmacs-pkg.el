@@ -21,7 +21,7 @@
     (rjsx-mode "0.1.0")
     (js2-refactor "0.8.0")
     (emmet-mode "1.0.8")
-    (smartparens "20170312.450")
+    (smartparens "1.9.0")
     (web-mode "14.1")
     (multiple-cursors "1.4.0")
     (drag-stuff "0.3.0")))

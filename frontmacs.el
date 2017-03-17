@@ -16,6 +16,8 @@
 ;; different language modes
 (require 'frontmacs-web)
 (require 'frontmacs-javascript)
+(require 'frontmacs-ruby)
+(require 'frontmacs-yaml)
 
 (provide 'frontmacs)
 ;;; frontmacs.el ends here

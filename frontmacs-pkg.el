@@ -1,5 +1,5 @@
 ;; -*- eval: (flycheck-mode -1) -*-
-(define-package "frontmacs" "0.1.6" "Frontside config package for emacs"
+(define-package "frontmacs" "0.1.7" "Frontside config package for emacs"
   '((f "0.19.0")
     (magit "2.8.0")
     (swiper "0.7.0")
@@ -23,6 +23,7 @@
     (emmet-mode "1.0.8")
     (smartparens "1.9.0")
     (web-mode "14.1")
+    (yaml-mode "0.0.13")
     (multiple-cursors "1.4.0")
     (drag-stuff "0.3.0")))
 

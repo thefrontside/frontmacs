@@ -61,7 +61,7 @@ Just beacuse the default set of packages is heavily curated, doesn't
 mean that there shouldn't be room for you to innovate and exercise
 your creative muscles.
 
-In fact, because Frontmacs is distributed as an esilp archive, it is
+In fact, because Frontmacs is distributed as an Emacs Lisp package, it is
 _decoupled_ from git and so you are now free to maintain your own
 customizations in your own repository without fear of conflicting with
 the main distribution.

@@ -47,4 +47,7 @@ new windows will each be 180 columns wide, and sit just below the threshold.
 (unless window-system
   (menu-bar-mode -1))
 
+; disable startup screen
+(setq inhibit-startup-screen t)
+
 (provide 'frontmacs-windowing)

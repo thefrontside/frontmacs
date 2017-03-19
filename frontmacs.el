@@ -16,6 +16,7 @@
 ;; different language modes
 (require 'frontmacs-web)
 (require 'frontmacs-javascript)
+(require 'frontmacs-css)
 (require 'frontmacs-ruby)
 (require 'frontmacs-yaml)
 

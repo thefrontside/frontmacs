@@ -100,6 +100,12 @@
 (which-key-mode +1)
 
 
+;; Yet another snippet library, which is awesome. Allows you to expand
+;; commonly used code templates into your buffer. Use it everywhere!
+;; see https://joaotavora.github.io/yasnippet/
+(require 'yasnippet)
+(yas-global-mode +1)
+
 (provide 'frontmacs-editing)
 
 ;;; frontmacs-editing.el ends here

@@ -1,5 +1,5 @@
 ;; -*- eval: (flycheck-mode -1) -*-
-(define-package "frontmacs" "0.1.9" "Frontside config package for emacs"
+(define-package "frontmacs" "0.1.10" "Frontside config package for emacs"
   '((f "0.19.0")
     (magit "2.8.0")
     (swiper "0.7.0")
@@ -8,6 +8,7 @@
     (exec-path-from-shell "1.11")
     (page-break-lines "0.11")
     (crux "0.3.0")
+    (yasnippet "0.11.0")
     (vkill "20091203.1022")
     (key-chord "20160227.438")
     (hlinum "20160521.2112")

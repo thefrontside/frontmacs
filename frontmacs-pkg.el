@@ -8,6 +8,7 @@
     (exec-path-from-shell "1.11")
     (page-break-lines "0.11")
     (crux "0.3.0")
+    (yasnippet "0.11.0")
     (vkill "20091203.1022")
     (key-chord "20160227.438")
     (hlinum "20160521.2112")

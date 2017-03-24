@@ -119,6 +119,10 @@
 ;; longer create these lock files.
 (setq create-lockfiles nil)
 
+;; enable y/n answers so you don't have to type 'yes' on 'no'
+;; for everything
+(fset 'yes-or-no-p 'y-or-n-p)
+
 (provide 'frontmacs-editing)
 
 ;;; frontmacs-editing.el ends here

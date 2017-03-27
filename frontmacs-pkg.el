@@ -1,5 +1,5 @@
 ;; -*- eval: (flycheck-mode -1) -*-
-(define-package "frontmacs" "0.1.13" "Frontside config package for emacs"
+(define-package "frontmacs" "0.1.14" "Frontside config package for emacs"
   '((f "0.19.0")
     (magit "2.8.0")
     (swiper "0.7.0")
@@ -14,6 +14,7 @@
     (key-chord "20160227.438")
     (hlinum "20160521.2112")
     (undo-tree "0.6.5")
+    (browse-kill-ring "2.0.0")
     (ace-window "0.9.0")
     (expand-region "0.11.0")
     (comment-dwim-2 "1.2.2")

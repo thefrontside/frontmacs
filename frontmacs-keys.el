@@ -15,6 +15,7 @@
 (require 'expand-region)
 (require 'ace-window)
 (require 'comment-dwim-2)
+(require 'browse-kill-ring)
 
 ;; Enables the M-up, M-down, M-right, M-left keys in terminal mode.
 (add-hook 'tty-setup-hook
@@ -42,6 +43,9 @@
 
 ;; undo
 (key-chord-define-global "uu" 'undo-tree-visualize)
+
+;; browse kill ring
+(key-chord-define-global "yy" 'browse-kill-ring)
 
 ;; multiple cursors
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)

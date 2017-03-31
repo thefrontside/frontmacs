@@ -13,5 +13,7 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
+;; Open github links in the browser
+(setq git-link-open-in-browser t)
 
 (provide 'frontmacs-vcs)

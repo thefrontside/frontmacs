@@ -90,6 +90,9 @@
 ;; Kill whole line
 (global-set-key (kbd "C-w") 'crux-kill-whole-line)
 
+;; Open current line or region in Github
+(global-set-key (kbd "C-x v b") #'git-link)
+
 (provide 'frontmacs-keys)
 
 ;;; frontmacs-keys.el ends here

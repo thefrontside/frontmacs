@@ -2,7 +2,7 @@
 (define-package "frontmacs" "0.1.14" "Frontside config package for emacs"
   '((f "0.19.0")
     (magit "2.8.0")
-    (github-browse-file "0.5.0")
+    (git-link "0.4.5")
     (swiper "0.7.0")
     (projectile "0.13.0")
     (ag "0.4.7")

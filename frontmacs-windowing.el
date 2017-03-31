@@ -50,4 +50,8 @@ new windows will each be 180 columns wide, and sit just below the threshold.
 ; disable startup screen
 (setq inhibit-startup-screen t)
 
+;; use super (cmd) + arrow keys to switch between visible buffers
+(require 'windmove)
+(windmove-default-keybindings 'super)
+
 (provide 'frontmacs-windowing)

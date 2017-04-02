@@ -19,6 +19,7 @@
 (require 'frontmacs-css)
 (require 'frontmacs-ruby)
 (require 'frontmacs-yaml)
+(require 'frontmacs-markdown)
 
 (provide 'frontmacs)
 ;;; frontmacs.el ends here

@@ -87,8 +87,15 @@
 ;; Rename the current buffer and its visiting file if any.
 (global-set-key (kbd "C-c r") 'crux-rename-buffer-and-file)
 
-;; Kill whole line
-(global-set-key (kbd "C-w") 'crux-kill-whole-line)
+;; Kill whole line OR region
+(defun kill-region-or-line ()
+  "Kill the region if active. Else, kill the line."
+  (interactive)
+  (if (region-active-p)
+      (call-interactively 'kill-region)
+    (call-interactively 'crux-kill-whole-line)))
+
+(global-set-key (kbd "C-w") 'kill-region-or-line)
 
 ;; Open current line or region in Github
 (global-set-key (kbd "C-x v b") #'git-link)

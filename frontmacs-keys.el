@@ -100,6 +100,15 @@
 ;; Open current line or region in Github
 (global-set-key (kbd "C-x v b") #'git-link)
 
+;; Counsel provides some nice enhancements to core emacs functions.
+;; See https://github.com/abo-abo/swiper#counsel for details
+
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-h f") 'counsel-describe-function)
+(global-set-key (kbd "C-h v") 'counsel-describe-variable)
+(global-set-key (kbd "C-h b") 'counsel-descbinds)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+
 (provide 'frontmacs-keys)
 
 ;;; frontmacs-keys.el ends here

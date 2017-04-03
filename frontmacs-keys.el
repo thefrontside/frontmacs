@@ -88,14 +88,14 @@
 (global-set-key (kbd "C-c r") 'crux-rename-buffer-and-file)
 
 ;; Kill whole line OR region
-(defun kill-region-or-line ()
+(defun frontmacs-kill-region-or-line ()
   "Kill the region if active. Else, kill the line."
   (interactive)
-  (if (region-active-p)
+  (if (use-region-p)
       (call-interactively 'kill-region)
     (call-interactively 'crux-kill-whole-line)))
 
-(global-set-key (kbd "C-w") 'kill-region-or-line)
+(global-set-key (kbd "C-w") 'frontmacs-kill-region-or-line)
 
 ;; Open current line or region in Github
 (global-set-key (kbd "C-x v b") #'git-link)

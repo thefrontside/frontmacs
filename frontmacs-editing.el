@@ -123,7 +123,12 @@
 ;; for everything
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; Autosave when leaving buffer or frame
+;; Autosave when switching buffers, windows, or frames.
+;; Note: Emacs has different concepts of buffers, windows and frames
+;; than you might be used to.
+;;
+;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Buffers-and-Windows.html
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Frames.html
 (defadvice switch-to-buffer (before save-buffer-now activate)
   (when buffer-file-name (save-buffer)))
 (defadvice other-window (before other-window-now activate)
@@ -136,6 +141,8 @@
   (when buffer-file-name (save-buffer)))
 (defadvice windmove-right (before other-window-now activate)
   (when buffer-file-name (save-buffer)))
+
+(add-hook 'focus-out-hook (lambda () (when buffer-file-name (save-buffer))))
 
 (provide 'frontmacs-editing)
 

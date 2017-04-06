@@ -6,6 +6,9 @@ matrix:
   fast_finish: true
   allow_failures:
     - env: EMACS_VERSION=snapshot
+cache:
+  - directories:
+    - $HOME/emacs
 env:
   - EMACS_VERSION=25.1
   - EMACS_VERSION=snapshot

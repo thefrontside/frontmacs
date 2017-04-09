@@ -37,7 +37,7 @@ script:
   # off the network and boot up succesfull
   - make init-test
   # run individual tests
-  - cask exec ert-runner
+  - cask exec buttercup -L .
   # build the archive for uploading to elpa.frontside.io
   - make archive
 

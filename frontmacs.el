@@ -11,6 +11,7 @@
 (require 'frontmacs-vcs)
 (require 'frontmacs-windowing)
 (require 'frontmacs-editing)
+(require 'frontmacs-devel)
 (require 'frontmacs-keys)
 
 ;; different language modes

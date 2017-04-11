@@ -25,9 +25,12 @@
 (setq projectile-completion-system 'ivy)
 (global-set-key "\C-s" 'swiper)
 
-;; Make the default completion mechanism a fuzzy search.
+;; Make the default completion mechanism a fuzzy search. However, you
+;; don't really want to use fuzzy matching on lists that have content
+;; with a lot of spaces (like documents), so disable for swiper.
 (setq ivy-re-builders-alist
-      '((t . ivy--regex-fuzzy)))
+      '((swiper . ivy--regex-plus)
+        (t . ivy--regex-fuzzy)))
 
 ;; setup company mode for autocomplete
 (setq company-idle-delay 0.5)

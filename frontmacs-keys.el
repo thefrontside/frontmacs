@@ -100,6 +100,10 @@
 ;; Open current line or region in Github
 (global-set-key (kbd "C-x v b") #'git-link)
 
+;; Fire up the git time machine
+;; https://github.com/pidu/git-timemachine
+(global-set-key (kbd "C-x v t") 'git-timemachine)
+
 ;; Counsel provides some nice enhancements to core emacs functions.
 ;; See https://github.com/abo-abo/swiper#counsel for details
 

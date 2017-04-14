@@ -3,6 +3,7 @@
   '((f "0.19.0")
     (magit "2.8.0")
     (git-link "0.4.5")
+    (git-timemachine "3.0")
     (swiper "0.7.0")
     (counsel "0.8.0")
     (flx "0.6.1")

@@ -87,6 +87,10 @@
 ;; Rename the current buffer and its visiting file if any.
 (global-set-key (kbd "C-c r") 'crux-rename-buffer-and-file)
 
+;; swap the content of the two windows. Left side goes to right. Right side goes
+;; to left.
+(global-set-key (kbd "C-c s") 'crux-swap-windows)
+
 ;; Kill whole line OR region
 (defun frontmacs-kill-region-or-line ()
   "Kill the region if active. Else, kill the line."

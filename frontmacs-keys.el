@@ -47,6 +47,9 @@
 ;; browse kill ring
 (key-chord-define-global "yy" 'browse-kill-ring)
 
+;; shortcut for M-x is nice
+(key-chord-define-global "xx" 'counsel-M-x)
+
 ;; multiple cursors
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)

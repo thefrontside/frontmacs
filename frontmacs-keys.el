@@ -111,6 +111,9 @@
 ;; https://github.com/pidu/git-timemachine
 (global-set-key (kbd "C-x v t") 'git-timemachine)
 
+;; Clone a github repository
+(global-set-key (kbd "C-x v c") #'github-clone)
+
 ;; Counsel provides some nice enhancements to core emacs functions.
 ;; See https://github.com/abo-abo/swiper#counsel for details
 

@@ -53,11 +53,11 @@
 (require 'flycheck)
 (setq flycheck-indication-mode 'right-fringe)
 
-;; make the flycheck arrow look like a little triagle.
+;; make the flycheck arrow look like an exclamation point.
 ;; but only do it when emacs runs in a window, not terminal
 (when window-system
   (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
-    [0 0 0 0 0 4 12 28 60 124 252 124 60 28 12 4 0 0 0 0]))
+    [0 24 24 24 24 24 24 0 0 24 24 0 0 0 0 0 0]))
 
 (add-hook 'prog-mode-hook 'flycheck-mode)
 

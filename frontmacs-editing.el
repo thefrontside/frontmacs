@@ -7,7 +7,7 @@
 ;; Behaviors for when you edit things.
 
 ;;; Code:
-(require 'diminish)
+
 ;; Death to the tabs indeed!
 ;; https://github.com/bbatsov/prelude/blob/master/core/prelude-editor.el#L35-L44
 (setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
@@ -44,12 +44,10 @@
 ;; relating to the operations.
 (require 'volatile-highlights)
 (volatile-highlights-mode t)
-(diminish 'volatile-highlights-mode)
 
 ;; undo visual tree
 (require 'undo-tree)
 (global-undo-tree-mode 1)
-(diminish 'undo-tree-mode)
 
 ;; setup flycheck to show on the right side of the buffer
 (require 'flycheck)

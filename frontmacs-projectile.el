@@ -8,7 +8,6 @@
 ;; itself properly
 (require 'projectile)
 
-
 ;; turn on projectile everywhere
 (projectile-global-mode t)
 

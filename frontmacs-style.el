@@ -11,6 +11,7 @@
 ;;; Code:
 
 (require 'package)
+(require 'diminish)
 
 (when frontmacs-theme
   ;; `package-install' is finicky about getting passed a symbol. It

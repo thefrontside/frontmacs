@@ -1,5 +1,6 @@
 (require 'swiper)
 (require 'company)
+(require 'diminish)
 
 ;; -- Ivy setup --
 ;; https://github.com/abo-abo/swiper

@@ -1,4 +1,5 @@
 (require 'f)
+(require 'diminish)
 
 ;; Have projectile persist its state into the data/ directory.
 (setq projectile-cache-file (f-join frontmacs-data-directory "projectile.cache"))

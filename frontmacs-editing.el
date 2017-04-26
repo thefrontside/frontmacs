@@ -49,6 +49,9 @@
 (require 'undo-tree)
 (global-undo-tree-mode 1)
 
+;; set fringe widths
+(fringe-mode '(2 . 8))
+
 ;; setup flycheck to show on the right side of the buffer
 (require 'flycheck)
 (setq flycheck-indication-mode 'right-fringe)

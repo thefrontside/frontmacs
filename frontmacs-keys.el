@@ -54,6 +54,10 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 
+;; drag stuff with M-n and M-p
+(global-set-key (kbd "M-n") 'drag-stuff-down)
+(global-set-key (kbd "M-p") 'drag-stuff-up)
+
 ;; comment lines out with cmd + /
 (global-set-key (kbd "s-/") 'comment-dwim-2)
 (global-set-key (kbd "C-c /") 'comment-dwim-2)

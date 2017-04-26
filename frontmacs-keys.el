@@ -75,6 +75,10 @@
 ;; Insert an empty line and indent it properly (as in most IDEs).
 (global-set-key [(shift return)] #'crux-smart-open-line)
 
+;; Move point to first non-whitespace character on this line. If point is already
+;; there, move to the beginning of the line.
+(global-set-key [remap move-beginning-of-line] #'crux-move-beginning-of-line)
+
 ;; Fix indentation in buffer and strip whitespace.
 (global-set-key (kbd "C-c n") 'crux-cleanup-buffer-or-region)
 

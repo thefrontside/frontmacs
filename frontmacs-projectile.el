@@ -7,7 +7,7 @@
 ;; require projectile _after_ the configuration has been set so that it initializes
 ;; itself properly
 (require 'projectile)
-
+(diminish 'projectile-mode)
 
 ;; turn on projectile everywhere
 (projectile-global-mode t)

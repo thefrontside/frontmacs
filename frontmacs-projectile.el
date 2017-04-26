@@ -1,5 +1,4 @@
 (require 'f)
-(require 'diminish)
 
 ;; Have projectile persist its state into the data/ directory.
 (setq projectile-cache-file (f-join frontmacs-data-directory "projectile.cache"))
@@ -8,7 +7,6 @@
 ;; require projectile _after_ the configuration has been set so that it initializes
 ;; itself properly
 (require 'projectile)
-(diminish 'projectile-mode)
 
 ;; turn on projectile everywhere
 (projectile-global-mode t)

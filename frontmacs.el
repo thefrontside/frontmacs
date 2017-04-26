@@ -13,6 +13,7 @@
 (require 'frontmacs-editing)
 (require 'frontmacs-devel)
 (require 'frontmacs-keys)
+(require 'frontmacs-modeline)
 
 ;; different language modes
 (require 'frontmacs-web)

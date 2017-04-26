@@ -11,7 +11,6 @@
 ;;; Code:
 
 (require 'package)
-(require 'diminish)
 
 (when frontmacs-theme
   ;; `package-install' is finicky about getting passed a symbol. It
@@ -33,7 +32,6 @@
 
 (require 'page-break-lines)
 (global-page-break-lines-mode)
-(diminish 'page-break-lines-mode)
 
 (provide 'frontmacs-style)
 ;;; frontmacs-style.el ends here

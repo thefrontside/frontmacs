@@ -7,7 +7,7 @@
 ;; Behaviors for when you edit things.
 
 ;;; Code:
-(require 'diminish)
+
 ;; Death to the tabs indeed!
 ;; https://github.com/bbatsov/prelude/blob/master/core/prelude-editor.el#L35-L44
 (setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
@@ -23,7 +23,6 @@
 ;; setup smartparens to auto open and close pairs
 (require 'smartparens-config)
 (smartparens-global-mode 1)
-(diminish 'smartparens-mode)
 
 ;; when you have a selection, typing text replaces it all.
 (delete-selection-mode t)
@@ -45,17 +44,14 @@
 ;; relating to the operations.
 (require 'volatile-highlights)
 (volatile-highlights-mode t)
-(diminish 'volatile-highlights-mode)
 
 ;; undo visual tree
 (require 'undo-tree)
 (global-undo-tree-mode 1)
-(diminish 'undo-tree-mode)
 
 ;; setup flycheck to show on the right side of the buffer
 (require 'flycheck)
 (setq flycheck-indication-mode 'right-fringe)
-(diminish 'flycheck-mode)
 
 ;; make the flycheck arrow look like a little triagle.
 ;; but only do it when emacs runs in a window, not terminal
@@ -95,20 +91,17 @@
 (require 'drag-stuff)
 (drag-stuff-global-mode)
 (drag-stuff-define-keys)
-(diminish 'drag-stuff-mode)
 
 ;; displays the key bindings following your
 ;; currently entered incomplete command (a prefix) in a popup
 (require 'which-key)
 (which-key-mode +1)
-(diminish 'which-key-mode)
 
 ;; Yet another snippet library, which is awesome. Allows you to expand
 ;; commonly used code templates into your buffer. Use it everywhere!
 ;; see https://joaotavora.github.io/yasnippet/
 (require 'yasnippet)
 (yas-global-mode +1)
-(diminish 'yas-minor-mode)
 
 ;; Emacs creates lockfiles to recognize when someone else is already
 ;; editing the same file as you.

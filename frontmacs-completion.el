@@ -1,6 +1,5 @@
 (require 'swiper)
 (require 'company)
-(require 'diminish)
 
 ;; -- Ivy setup --
 ;; https://github.com/abo-abo/swiper
@@ -23,7 +22,6 @@
 
 ;; use Ivy mode for completion
 (ivy-mode 1)
-(diminish 'ivy-mode)
 (setq projectile-completion-system 'ivy)
 (global-set-key "\C-s" 'swiper)
 
@@ -42,6 +40,5 @@
 ;; is displayed on top (happens near the bottom of windows)
 (setq company-tooltip-flip-when-above t)
 (global-company-mode 1)
-(diminish 'company-mode)
 
 (provide 'frontmacs-completion)

@@ -49,7 +49,8 @@
 (require 'undo-tree)
 (global-undo-tree-mode 1)
 
-;; set fringe widths
+;; make the left fringe 2 pixels so the hl-diff indicators aren't so fat
+;; leave the right fringe width at the default 8 pixels
 (fringe-mode '(2 . 8))
 
 ;; setup flycheck to show on the right side of the buffer

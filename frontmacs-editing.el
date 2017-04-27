@@ -49,15 +49,19 @@
 (require 'undo-tree)
 (global-undo-tree-mode 1)
 
+;; make the left fringe 2 pixels so the hl-diff indicators aren't so fat
+;; leave the right fringe width at the default 8 pixels
+(fringe-mode '(2 . 8))
+
 ;; setup flycheck to show on the right side of the buffer
 (require 'flycheck)
 (setq flycheck-indication-mode 'right-fringe)
 
-;; make the flycheck arrow look like a little triagle.
+;; make the flycheck arrow look like an exclamation point.
 ;; but only do it when emacs runs in a window, not terminal
 (when window-system
   (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
-    [0 0 0 0 0 4 12 28 60 124 252 124 60 28 12 4 0 0 0 0]))
+    [0 24 24 24 24 24 24 0 0 24 24 0 0 0 0 0 0]))
 
 (add-hook 'prog-mode-hook 'flycheck-mode)
 

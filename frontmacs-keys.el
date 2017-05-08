@@ -16,6 +16,7 @@
 (require 'ace-window)
 (require 'comment-dwim-2)
 (require 'browse-kill-ring)
+(require 'counsel)
 
 ;; Enables the M-up, M-down, M-right, M-left keys in terminal mode.
 (add-hook 'tty-setup-hook
@@ -130,6 +131,11 @@
 (global-set-key (kbd "C-h v") 'counsel-describe-variable)
 (global-set-key (kbd "C-h b") 'counsel-descbinds)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+
+;; Flip bindings for ivy-done and ivy-alt-done in counsel. This allows you to
+;; hit RET to complete a directory instead of opening dired.
+(define-key counsel-find-file-map (kbd "C-j") 'ivy-done)
+(define-key counsel-find-file-map (kbd "RET") 'ivy-alt-done)
 
 (provide 'frontmacs-keys)
 

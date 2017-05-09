@@ -34,6 +34,7 @@
     (js2-refactor "0.8.0")
     (smartparens "1.9.0")
     (js2-mode "20170116")
+    (js-doc "20160714.2134")
     (rjsx-mode "0.1.0")
     (emmet-mode "1.0.8")
     (web-mode "14.1")

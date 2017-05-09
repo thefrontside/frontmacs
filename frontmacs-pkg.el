@@ -35,6 +35,7 @@
     (smartparens "1.9.0")
     (js2-mode "20170116")
     (rjsx-mode "0.1.0")
+    (tide "2.2.2")
     (emmet-mode "1.0.8")
     (web-mode "14.1")
     (markdown-mode "2.1")

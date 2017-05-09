@@ -18,10 +18,12 @@
 (custom-set-variables '(js-indent-level 2)
                       '(js2-basic-offset 2))
 
-;; setup jsdoc
-(add-hook 'js2-mode-hook
-           (lambda ()
-               (define-key js2-mode-map "\C-ci" #'js-doc-insert-function-doc)
-               (define-key js2-mode-map "@" #'js-doc-insert-tag)))
+;; setup jsdoc: https://github.com/mooz/js-doc
+;;
+;; We use the same prefix for js2r `C-c C-r' because it's an "advanced"
+;; refactory-y type thing.
+(define-key js2-mode-map (kbd "C-c C-r d") #'js-doc-insert-function-doc)
+(define-key js2-mode-map "@" #'js-doc-insert-tag)
+
 
 (provide 'frontmacs-javascript)

@@ -21,9 +21,9 @@
 ;; setup jsdoc: https://github.com/mooz/js-doc
 ;;
 ;; We use the same prefix for js2r `C-c C-r' because it's an "advanced"
-;; refactory-y type thing.
-(define-key js2-mode-map (kbd "C-c C-r d") #'js-doc-insert-function-doc)
-(define-key js2-mode-map "@" #'js-doc-insert-tag)
+;; refactory-y type thing. The additional `i' prefix is for "insert"
+(define-key js2-refactor-mode-map (kbd "C-c C-r i d") #'js-doc-insert-function-doc)
+(define-key js2-refactor-mode-map "@" #'js-doc-insert-tag)
 
 
 (provide 'frontmacs-javascript)

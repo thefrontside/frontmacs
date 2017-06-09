@@ -1,5 +1,6 @@
 (require 'swiper)
 (require 'company)
+(require 'counsel-projectile)
 
 ;; -- Ivy setup --
 ;; https://github.com/abo-abo/swiper
@@ -23,7 +24,7 @@
 ;; use Ivy mode for completion
 (ivy-mode 1)
 (setq projectile-completion-system 'ivy)
-(global-set-key "\C-s" 'swiper)
+(counsel-projectile-on)
 
 ;; Make the default completion mechanism a fuzzy search. However, you
 ;; don't really want to use fuzzy matching on lists that have content

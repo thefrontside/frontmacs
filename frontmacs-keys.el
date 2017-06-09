@@ -33,6 +33,9 @@
 ;; set undo to cmd + z
 (global-set-key (kbd "C-z") 'undo)
 
+;; search using ivy with swiper
+(global-set-key (kbd "C-s") 'swiper)
+
 ;; go to word
 (key-chord-define-global "jj" 'avy-goto-word-1)
 

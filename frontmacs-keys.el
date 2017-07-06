@@ -140,6 +140,26 @@
 (define-key counsel-find-file-map (kbd "C-j") 'ivy-done)
 (define-key counsel-find-file-map (kbd "RET") 'ivy-alt-done)
 
-(provide 'frontmacs-keys)
 
+;; https://www.emacswiki.org/emacs/zoom-frm.el
+;;
+;; Zoom Frames allows you to change the font-size of the current frame up or down. These are
+;; the suggested bindings from the `zoom-frm' package itself:
+;;
+;;    Emacs 23 and later:
+;;
+(require 'zoom-frm)
+(define-key ctl-x-map [(control ?+)] 'zoom-in/out)
+(define-key ctl-x-map [(control ?-)] 'zoom-in/out)
+(define-key ctl-x-map [(control ?=)] 'zoom-in/out)
+(define-key ctl-x-map [(control ?0)] 'zoom-in/out)
+
+
+;; And then add bindings for the "super" key on OSX so that `⌘ +' will work on a mac.
+(when (eq system-type 'darwin)
+  (global-set-key (kbd "s-+") 'zoom-in/out)
+  (global-set-key (kbd "s--") 'zoom-in/out)
+  (global-set-key (kbd "s-0") 'zoom-in/out))
+
+(provide 'frontmacs-keys)
 ;;; frontmacs-keys.el ends here

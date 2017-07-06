@@ -23,6 +23,7 @@
     (undo-tree "0.6.5")
     (browse-kill-ring "2.0.0")
     (ace-window "0.9.0")
+    (zoom-frm "20170125.1953")
     (expand-region "0.11.0")
     (comment-dwim-2 "1.2.2")
     (company "0.9.2")

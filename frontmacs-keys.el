@@ -157,9 +157,9 @@
 
 ;; And then add bindings for the "super" key on OSX so that `⌘ +' will work on a mac.
 (when (eq system-type 'darwin)
-  (global-set-key (kbd "s-+") 'zoom-in/out)
-  (global-set-key (kbd "s--") 'zoom-in/out)
-  (global-set-key (kbd "s-0") 'zoom-in/out))
+  (global-set-key (kbd "s-+") #'zoom-frm-in)
+  (global-set-key (kbd "s--") #'zoom-frm-out)
+  (global-set-key (kbd "s-0") #'zoom-frm-unzoom))
 
 (provide 'frontmacs-keys)
 ;;; frontmacs-keys.el ends here

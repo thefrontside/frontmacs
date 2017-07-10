@@ -22,13 +22,15 @@
 (package-initialize)
 
 (setq package-archives
-      '(("GNU" . "http://elpa.gnu.org/packages/")
-        ("MELPA Stable" . "https://stable.melpa.org/packages/")
-        ("MELPA" . "https://melpa.org/packages/"))
+      '(("MELPA Stable" . "https://stable.melpa.org/packages/")
+        ("MELPA" . "https://melpa.org/packages/")
+        ("GNU" . "http://elpa.gnu.org/packages/"))
       package-archive-priorities
       '(("MELPA Stable" . 10)
-        ("GNU" . 5)
-        ("MELPA" . 0)))
+        ("MELPA" . 5)
+        ("GNU" . 0))
+      package-pinned-packages
+      '((js2-mode . "MELPA")))
 
 
 ;; It turns out that the way package.el connects to the server, it

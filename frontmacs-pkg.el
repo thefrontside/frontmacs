@@ -38,6 +38,7 @@
     (js2-mode "20170624")
     (js-doc "20160714.2134")
     (rjsx-mode "0.1.3")
+    (tide "2.3.1")
     (emmet-mode "1.0.8")
     (web-mode "14.1")
     (markdown-mode "2.1")

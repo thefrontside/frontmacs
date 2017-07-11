@@ -25,5 +25,26 @@
 (define-key js2-refactor-mode-map (kbd "C-c C-r i d") #'js-doc-insert-function-doc)
 (define-key js2-refactor-mode-map "@" #'js-doc-insert-tag)
 
+;; TypeScript:
+;;
+;; setup tide mode, the typescript IDE for Emacs
+;; This is lifted straight from the suggested setup on the TIDE
+;; README https://github.com/ananthakumaran/tide
+(defun fs/setup-tide-mode()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (company-mode +1))
+
+(add-hook 'typescript-mode-hook #'fs/setup-tide-mode)
+
+;; setup formatting options. The full list can be found at
+;; https://github.com/Microsoft/TypeScript/blob/87e9506/src/services/services.ts#L1244-L1272
+(setq tide-format-options
+      '(:indentSize 2 :tabSize 2))
 
 (provide 'frontmacs-javascript)
+;;; frontmacs-javascript.el ends here

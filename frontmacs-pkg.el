@@ -48,7 +48,8 @@
     (which-key "2.0.1")
     (volatile-highlights "1.11")
     (multiple-cursors "1.4.0")
-    (drag-stuff "0.3.0")))
+    (drag-stuff "0.3.0")
+    (use-package "2.3")))
 
   :keywords '("emacs" "awesome" "starterkit")
 

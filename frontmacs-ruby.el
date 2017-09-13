@@ -49,4 +49,11 @@
  '(rspec-install-snippets))
 
 
+(custom-set-variables
+
+ ;; don't use Rake to run specs. If your suite doesn't run with just
+ ;; using `bundle exec rspec specs/` then you're doing it wrong.
+ '(rspec-use-rake-when-possible nil))
+
 (provide 'frontmacs-ruby)
+;;; frontmacs-ruby.el ends here

@@ -46,5 +46,13 @@
 (setq tide-format-options
       '(:indentSize 2 :tabSize 2))
 
+
+;;; parse node.js stack traces in compilation buffer.s
+(require 'compile)
+(add-to-list 'compilation-error-regexp-alist 'node)
+(add-to-list 'compilation-error-regexp-alist-alist
+             '(node "at.*(\\(.+?\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\)" 1 2 3))
+
+
 (provide 'frontmacs-javascript)
 ;;; frontmacs-javascript.el ends here

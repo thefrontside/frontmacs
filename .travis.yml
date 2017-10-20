@@ -10,8 +10,11 @@ cache:
   - directories:
     - $HOME/emacs
 env:
-  - EMACS_VERSION=25.1
-  - EMACS_VERSION=snapshot
+  global:
+    - CASK_EMACS=/home/travis/bin/emacs
+  matrix:
+    - EMACS_VERSION=25.1
+    - EMACS_VERSION=snapshot
 before_install:
   # Configure $PATH: Executables are installed to $HOME/bin
   - export PATH="$HOME/bin:$PATH"

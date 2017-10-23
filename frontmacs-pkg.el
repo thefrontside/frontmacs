@@ -1,5 +1,5 @@
 ;; -*- eval: (flycheck-mode -1) -*-
-(define-package "frontmacs" "0.2.14" "Frontside config package for emacs"
+(define-package "frontmacs" "0.2.15" "Frontside config package for emacs"
   '((f "0.19.0")
     (magit "2.8.0")
     (git-link "0.4.5")

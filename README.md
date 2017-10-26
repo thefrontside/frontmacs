@@ -24,7 +24,7 @@ ultimately do overs. We know because we've [been there][5].
 
 This is painful enough when you're maintaining your own fork, but
 every time we wanted to make a customization from which the entire
-team could benefit, it involed everybody doing the same merge, rebase,
+team could benefit, it involved everybody doing the same merge, rebase,
 throw-away dance. But, it turns out that Emacs has a mechanism to
 distribute elisp code without having to use git. It's called `ELPA`
 and it's awesome. You can think of it like a Ruby gem or an NPM
@@ -57,7 +57,7 @@ get resolved more quickly.
 
 ### Customizable
 
-Just beacuse the default set of packages is heavily curated, doesn't
+Just because the default set of packages is heavily curated, doesn't
 mean that there shouldn't be room for you to innovate and exercise
 your creative muscles.
 
@@ -73,7 +73,7 @@ do.
 
 Whenever you integrate a bunch of different packages from across the
 internet, you're bound to run into conflicts over things like
-key-bindings, or function advise.
+key-bindings, or function advice.
 
 Making changes to an editing experience shared by many people is a
 responsibility we take very seriously. That's why Frontmacs makes sure
@@ -83,7 +83,7 @@ exactly what went wrong and where.
 
 ## Installation
 
-Download the bootstrap script into your following into your emacs directory
+Download the bootstrap script into your emacs directory
 
 ```
 $ cd ~/.emacs.d
@@ -109,7 +109,7 @@ well defined customizations. But don't worry, Frontmacs will generate
 this file for you so that you can see what all configuration variables
 are available.
 
-For everything else, there is all of the files contained in
+For everything else, there are all of the files contained in
 `$HOME/.emacs.d/initializers`. Every elisp file contained in this
 directory will be evaluated _after_ Frontmacs has been fully
 configured and initialized, so settings made in these files will

@@ -51,7 +51,7 @@
 (require 'compile)
 (add-to-list 'compilation-error-regexp-alist 'node)
 (add-to-list 'compilation-error-regexp-alist-alist
-             '(node "at.*(\\(.+?\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\)" 1 2 3))
+             '(node "^[[:blank:]]*at \\(.*(\\|\\)\\(.+?\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\)" 2 3 4))
 
 
 (provide 'frontmacs-javascript)

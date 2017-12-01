@@ -1,9 +1,11 @@
 (require 'js2-mode)
+(require 'rjsx-mode)
 (require 'js2-refactor)
 (require 'js-doc)
 
 ;; use rjsx-mode for all JS files
 (add-to-list 'auto-mode-alist '("\\.js\\'"    . rjsx-mode))
+(add-to-list 'auto-mode-alist '("\\.mjs\\'"    . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.pac\\'"   . rjsx-mode))
 (add-to-list 'interpreter-mode-alist '("node" . rjsx-mode))
 

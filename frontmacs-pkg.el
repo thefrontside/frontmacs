@@ -10,7 +10,7 @@
     (flx "0.6.1")
     (smex "3.0")
     (projectile "0.14.0")
-    (counsel-projectile "20170216.1426")
+    (counsel-projectile "20171227.1315")
     (ag "0.4.7")
     (exec-path-from-shell "1.11")
     (page-break-lines "0.11")

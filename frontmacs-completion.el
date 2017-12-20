@@ -24,7 +24,7 @@
 ;; use Ivy mode for completion
 (ivy-mode 1)
 (setq projectile-completion-system 'ivy)
-(counsel-projectile-on)
+(counsel-projectile-mode)
 
 ;; Make the default completion mechanism a fuzzy search. However, you
 ;; don't really want to use fuzzy matching on lists that have content

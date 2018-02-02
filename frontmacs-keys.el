@@ -17,6 +17,7 @@
 (require 'comment-dwim-2)
 (require 'browse-kill-ring)
 (require 'counsel)
+(require 'zoom-frm)
 
 ;; Enables the M-up, M-down, M-right, M-left keys in terminal mode.
 (add-hook 'tty-setup-hook

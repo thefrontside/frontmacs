@@ -1,4 +1,10 @@
+
 ;;; zoom-frm.el --- Commands to zoom frame font size.
+;; NOTE
+;; This file was vendored into frontmacs to resolev this issue.
+;; https://github.com/thefrontside/frontmacs/issues/115
+;; /NOTE
+;;
 ;;
 ;; Filename: zoom-frm.el
 ;; Description: Commands to zoom frame font size.
@@ -7,7 +13,7 @@
 ;; Copyright (C) 2005-2017, Drew Adams, all rights reserved.
 ;; Created: Fri Jan 07 10:24:35 2005
 ;; Version: 0
-;; Package-Requires: ((frame-fns "0") (frame-cmds "0"))
+;; Package-Requires: ((vendor-frame-fns "0") (vendor-frame-cmds "0"))
 ;; Last-Updated: Thu Mar  9 14:39:19 2017 (-0800)
 ;;           By: dradams
 ;;     Update #: 341
@@ -218,7 +224,7 @@
 
 (eval-when-compile (require 'cl)) ;; case
 
-(require 'frame-cmds) ;; enlarge-font
+(require 'vendor-frame-cmds) ;; enlarge-font
 
 
 (defvar zoom-frame/buffer) ;; Defined here for Emacs 22+.
@@ -454,7 +460,7 @@ Note: This zooming is unaffected by `zoom-frm-unzoom'."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(provide 'zoom-frm)
+(provide 'vendor-zoom-frm)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; zoom-frm.el ends here

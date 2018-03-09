@@ -54,4 +54,8 @@ new windows will each be 180 columns wide, and sit just below the threshold.
 (require 'windmove)
 (windmove-default-keybindings 'super)
 
+;; War and scrollbars. what are they good for?
+(require 'scroll-bar)
+(scroll-bar-mode -1)
+
 (provide 'frontmacs-windowing)

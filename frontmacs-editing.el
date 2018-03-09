@@ -146,6 +146,13 @@
 
 (add-hook 'focus-out-hook (lambda () (when buffer-file-name (save-buffer))))
 
+;; This makes indenting region and untabifying region work on the entire
+;; buffer if no region is selected
+;; https://github.com/bbatsov/crux#using-the-bundled-advices
+(require 'crux)
+(crux-with-region-or-buffer indent-region)
+(crux-with-region-or-buffer untabify)
+
 (provide 'frontmacs-editing)
 
 ;;; frontmacs-editing.el ends here

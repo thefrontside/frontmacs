@@ -1,0 +1,24 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:latest-browsers
+    environment:
+      CASK_EMACS: "$HOME/bin/emacs"
+      EMACS_VERSION: "25.1"
+    steps:
+      - checkout
+      - run: export PATH="$HOME/bin:$PATH"
+      - run: wget https://raw.githubusercontent.com/flycheck/emacs-travis/master/emacs-travis.mk
+      - run: make -f emacs-travis.mk install_emacs
+
+      - run: echo "Install Cask"
+      - run: git clone -b specify-package-descriptor --depth=1 https://github.com/cowboyd/cask.git $HOME/.cask
+      - run: ln -s $HOME/.cask/bin/cask $HOME/bin/cask
+      - run: make -f emacs-travis.mk install_texinfo
+
+      - run: cask install
+
+      - run: make init-test
+      - run: cask exec buttercup -L .
+      - run: make archive

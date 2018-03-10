@@ -3,6 +3,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
+## [0.2.19] - 2018-03-12
+
+### Added
+
+- Scroll bars are off by default
+  https://github.com/thefrontside/frontmacs/pull/120
+
+- Untabify and indent entire buffer if no region is selected
+  https://github.com/thefrontside/frontmacs/pull/119
+
 ## [0.2.18] - 2018-02-09
 
 ### Changed

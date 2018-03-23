@@ -1,5 +1,7 @@
 # Frontmacs
 
+[![Join the chat at https://gitter.im/thefrontside/frontmacs](https://badges.gitter.im/thefrontside/frontmacs.svg)](https://gitter.im/thefrontside/frontmacs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![ELPA Version](https://cdn.rawgit.com/thefrontside/frontmacs/master/elpa.svg?raw=true)](http://elpa.frontside.io/archive-contents)
 [![Build Status](https://travis-ci.org/thefrontside/frontmacs.svg?branch=master)](https://travis-ci.org/thefrontside/frontmacs)
 
@@ -81,6 +83,8 @@ that critical behaviors are tested so that you won't get bad upgrades
 that ruin your day. If you do, you can run the test suite to find out
 exactly what went wrong and where.
 
+---
+
 ## Installation
 
 Download the bootstrap script into your emacs directory
@@ -98,6 +102,8 @@ add the following lines to the top of your `init.el`:
 ```
 
 Restart your Emacs and away you go!
+
+---
 
 ## Configuration
 
@@ -131,6 +137,8 @@ Frontmacs will evaluate it.
 
 > Note: When in doubt about whether you should put something in `config.el` or a
 > custom initializer, use an initializer.
+
+---
 
 ## Development
 

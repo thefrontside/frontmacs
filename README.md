@@ -2,6 +2,7 @@
 
 [![ELPA Version](https://cdn.rawgit.com/thefrontside/frontmacs/master/elpa.svg?raw=true)](http://elpa.frontside.io/archive-contents)
 [![Build Status](https://travis-ci.org/thefrontside/frontmacs.svg?branch=master)](https://travis-ci.org/thefrontside/frontmacs)
+[![Join the chat at https://gitter.im/thefrontside/frontmacs](https://badges.gitter.im/thefrontside/frontmacs.svg)](https://gitter.im/thefrontside/frontmacs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 A _package-based_, web-centric, customizable, awesome-by-default,
 acceptance-tested Emacs distribution curated by your friends at

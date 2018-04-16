@@ -55,6 +55,12 @@
 (add-to-list 'compilation-error-regexp-alist-alist
              '(node "^[[:blank:]]*at \\(.*(\\|\\)\\(.+?\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\)" 2 3 4))
 
+;;; Specific versions of node packages installed on a per-project
+;;; basis are the norm in JS development. So, for example, if you're
+;;; using `eslint' to stylecheck your code, this will make project
+;;; buffers find `node_modules/.bin/eslint' before any other
+;;; executable in their `exec-path'
+(add-hook 'prog-mode-hook #'add-node-modules-path)
 
 (provide 'frontmacs-javascript)
 ;;; frontmacs-javascript.el ends here

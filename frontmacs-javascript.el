@@ -60,6 +60,7 @@
 ;;; using `eslint' to stylecheck your code, this will make project
 ;;; buffers find `node_modules/.bin/eslint' before any other
 ;;; executable in their `exec-path'
+(require 'add-node-modules-path)
 (add-hook 'prog-mode-hook #'add-node-modules-path)
 
 (provide 'frontmacs-javascript)

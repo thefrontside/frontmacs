@@ -20,6 +20,11 @@
 (custom-set-variables '(js-indent-level 2)
                       '(js2-basic-offset 2))
 
+;; disable js2-mode warnings and errors since we'll use eslint
+;; by default.
+(custom-set-variables '(js2-mode-show-parse-errors nil)
+                      '(js2-mode-show-strict-warnings nil))
+
 ;; setup jsdoc: https://github.com/mooz/js-doc
 ;;
 ;; We use the same prefix for js2r `C-c C-r' because it's an "advanced"

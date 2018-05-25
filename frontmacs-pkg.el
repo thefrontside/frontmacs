@@ -17,7 +17,6 @@
     (crux "0.3.0")
     (yasnippet "0.11.0")
     (mocha-snippets "1.0.0")
-    (vkill "20091203.1022")
     (key-chord "20160227.438")
     (hlinum "20160521.2112")
     (undo-tree "0.6.5")

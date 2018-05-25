@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
+## [0.2.21] - 2018-05-25
+
+### Changed
+
+- remove `vkill` package which was an insecure emacswiki package that
+  somehow slipped through the cracks. It is no longer on MELPA
+  see https://github.com/thefrontside/frontmacs/issues/126
+
 ## [0.2.19] - 2018-03-12
 
 ### Added

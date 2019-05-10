@@ -8,6 +8,9 @@
 ;; itself properly
 (require 'projectile)
 
+;;; select a keymap prefix for projectile
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
 ;; turn on projectile everywhere
 (projectile-global-mode t)
 

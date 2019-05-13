@@ -29,8 +29,10 @@
 ;; Make the default completion mechanism a fuzzy search. However, you
 ;; don't really want to use fuzzy matching on lists that have content
 ;; with a lot of spaces (like documents), so disable for swiper.
+;; Disable for counsel-ag since it's not narrowing results with fuzzy.
 (setq ivy-re-builders-alist
       '((swiper . ivy--regex-plus)
+        (counsel-ag . ivy--regex-plus)
         (t . ivy--regex-fuzzy)))
 
 ;; setup company mode for autocomplete

@@ -14,6 +14,9 @@ clean:
 	rm -rf build
 	rm -rf dist
 
+test:
+	cask exec buttercup -L .
+
 # Run Emacs locally with a sandboxed home directory, using the
 # frontmacs config. We point Emacs to the local archive that we built
 # on the system, and also erase it if it was there befor.
@@ -28,3 +31,5 @@ archive: build/packages/archive-contents
 # downloads everything off of the internet
 init-test: build archive
 	FRONTMACS_ARCHIVE=`pwd`/dist/packages/ HOME=`pwd`/build/home emacs -Q --batch --no-init-file --script scripts/init-frontmacs.el
+
+.PHONY: test

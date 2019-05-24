@@ -41,7 +41,7 @@ script:
   # off the network and boot up succesfull
   - make init-test
   # run individual tests
-  - cask exec buttercup -L .
+  - make test
   # build the archive for uploading to elpa.frontside.io
   - make archive
 

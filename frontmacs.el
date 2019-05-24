@@ -22,6 +22,7 @@
 (require 'frontmacs-ruby)
 (require 'frontmacs-yaml)
 (require 'frontmacs-markdown)
+(require 'frontmacs-language-server)
 
 (provide 'frontmacs)
 ;;; frontmacs.el ends here

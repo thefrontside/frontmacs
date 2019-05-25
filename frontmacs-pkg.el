@@ -48,6 +48,7 @@
     (drag-stuff "0.3.0")
     (lsp-mode "20190517.435")
     (company-lsp "20190505.615")
+    (dart-mode "1.0.4")
     (use-package "2.3")))
 
   :keywords '("emacs" "awesome" "starterkit")

@@ -8,6 +8,11 @@
 
 ;;; Code:
 
+;; Let's be nice and use editor config if found.
+(require 'editorconfig)
+(editorconfig-mode 1)
+
+
 ;; Death to the tabs indeed!
 ;; https://github.com/bbatsov/prelude/blob/master/core/prelude-editor.el#L35-L44
 (setq-default indent-tabs-mode nil)   ;; don't use tabs to indent

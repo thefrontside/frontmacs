@@ -25,6 +25,7 @@
 (diminish 'yas-minor-mode)
 (diminish 'projectile-mode)
 (diminish 'page-break-lines-mode)
+(diminish 'editorconfig-mode)
 
 (provide 'frontmacs-modeline)
 ;;; frontmacs-modeline.el ends here

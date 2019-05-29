@@ -7,9 +7,15 @@ matrix:
   fast_finish: true
   allow_failures:
     - env: EMACS_VERSION=snapshot
-cache:
-  - directories:
-    - $HOME/emacs
+
+# There is an issue with caching and Emacs 26
+# So until this is resolved, we need to disable caching in order
+# to reliably install Gnu TLS.
+# https://github.com/flycheck/emacs-travis/issues/22
+#
+# cache:
+#   - directories:
+#     - $HOME/emacs
 env:
   global:
     - CASK_EMACS=/home/travis/bin/emacs
@@ -58,4 +64,4 @@ deploy:
   local_dir: dist/packages
   on:
     branch: master
-    condition: $EMACS_VERSION = 25.1
+    condition: $EMACS_VERSION = 26.2

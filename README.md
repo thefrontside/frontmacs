@@ -8,53 +8,50 @@ A _package-based_, web-centric, customizable, awesome-by-default,
 acceptance-tested Emacs distribution curated by your friends at
 [Frontside][frontside].
 
-We've been using Emacs for years here at [Frontside][frontside], and
-have finally decided to share the configuration for our favorite
-editor with the world. Why did we make our own?
+Let's face it: Emacs is an incredible technology that unfortunately is
+intimidating, and quite often downright terrifying to get started with.
+
+When you use Frontmacs, you get a version of Emacs that does all kinds
+the amazing things out of the box that you would expect from
+a moden IDE including Web and JavaScript development. Not only that,
+you get painless upgrades to new packages and techniques as they
+become available.
 
 ### Package Based.
 
-We've been satisfied users of many a starter kit over the years, from
-the original [Emacs Starter Kit][2], to [Prelude][3] and
-[Spacemacs][4]. Most starter kits you come across _begin_ with a
-fork. You clone the repo, and then you're off to the races maintaining
-your own version. Any customizations you make are made to files
+When you maintain your own editor configuration, you are in a constant
+struggle with obsolesence. Unless you're willing to constantly
+research the latest techniques, and fiddle with them to work with your
+unioue setup, it will inevitably fall out of sync with the
+ever-evolving set of best practices.
+
+Alternatively, you can base your configuration on some shared
+repository where a common configuration is maintained and regularly
+updated. You clone the repo, and then you're off to the races.
+
+However, any customizations you make are made to files
 under version control and so upgrading and keeping up with the
 community is a constant battle of merges, rebases, throw-aways and
 ultimately do overs. We know because we've [been there][5].
 
-This is painful enough when you're maintaining your own fork, but
-every time we wanted to make a customization from which the entire
-team could benefit, it involved everybody doing the same merge, rebase,
-throw-away dance. But, it turns out that Emacs has a mechanism to
-distribute elisp code without having to use git. It's called `ELPA`
-and it's awesome. You can think of it like a Ruby gem or an NPM
-package, and this is what Frontmacs uses for deployment.
+But Emacs has a mechanism to distribute elisp code without having to
+use git. It's called `ELPA` and it's awesome. You can think of it like
+a Ruby gem or an NPM package, and this is what Frontmacs uses for deployment.
 
-We don't want to maintain code, we just want to enter a few keystrokes
-and download more awesome. And that's what we get by using elisp
-packages to install Frontmacs. Now, anytime we fix a bug or make an
-improvement, the entire team can benefit with a simple upgrade.
+None of us wants to maintain a private fork of a mega-repo, we just
+want to enter a few keystrokes and download more awesome. And that's
+what you get by using elisp packages to install Frontmacs. Now,
+anytime anybody fixes a bug or make an improvement, the entire
+community can benefit with a simple upgrade.
 
-### Web technologies
+### Community Driven
 
-We are specialists in UI, and so it is natural that our Emacs
-distribution reflect that expertise. If you work in the web, then you
-can be sure that Frontmacs will be an able partner in slinging modern
-JavaScript using modern frameworks. Whether it's React, React Native,
-Angular, Ember, SASS.... whatever.
-
-### Awesome by Default
-
-Emacs is true ultimate power! But that doesn't mean that it should be
-intimidating or terrifying to set up. Frontmacs aims to have
-everything you would expect to have a modern development environment
-to have out of the box: navigation, completion, etc...
-
-It draws power in a shared configuration in which everybody has a
-stake. More knowledge shared means fewer bugs arise, and those that do
-get resolved more quickly.
-
+A wider group of people contributing to Frontmacs development means
+that if you're wanting to try something new, chances are it's
+already powered up and ready to go with a great set of features. For
+example, if you want to try your hand at React, you don't want to
+spend the first 90 minutes fiddling with your editor. You want to
+spend that time ripping code!
 
 ### Customizable
 
@@ -69,27 +66,22 @@ the main distribution.
 
 ### Acceptance Tested
 
-Most of the planet doesn't treat editor configuration as software. We
-do.
+A modern Emacs configuration is software that is subtle and
+complex. So if it's going to provide a pleasant, error-free
+experience, then it needs to be treated like software of that level.
 
-Whenever you integrate a bunch of different packages from across the
-internet, you're bound to run into conflicts over things like
-key-bindings, or function advice.
-
-Making changes to an editing experience shared by many people is a
-responsibility we take very seriously. That's why Frontmacs makes sure
-that critical behaviors are tested so that you won't get bad upgrades
-that ruin your day. If you do, you can run the test suite to find out
-exactly what went wrong and where.
-
----
+Frontmacs tests critical workflows so that you won't get bad upgrades
+that ruin your day.
 
 ## Installation
+
+It is recommended that you remove any current configuration that you
+have from your emacs directory before installing Frontmacs.
 
 Download the bootstrap script into your emacs directory
 
 ```
-$ cd ~/.emacs.d
+$ mkdir -p ~/.emacs.d && cd ~/.emacs.d
 $ wget https://raw.githubusercontent.com/thefrontside/frontmacs/master/scripts/init-frontmacs.el
 ```
 

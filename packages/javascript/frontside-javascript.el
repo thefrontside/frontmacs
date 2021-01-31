@@ -1,0 +1,187 @@
+;;; frontside-javascript.el --- JS  development that just work™️.
+
+;; Author: Frontside Engineering <engineering@frontside.com>
+;; Version: 1.0.0
+;; Package-Requires: (add-node-modules-path company flycheck js2-mode js2-refactor rjsx-mode tide web-mode)
+;; Keywords: javascript, typescript, jsx, mdx
+;; URL: https://github.com/frontside/frontmacs
+
+;;; Commentary:
+
+;; Modern JavaScript development can be complex.  With the rise of
+;; transpilers such as Babel and TypeScript, the needs for editing,
+;; testing, and building JavaScript are more difficult than ever.
+;; While editors like VSCode come out of the box being robust tools
+;; for working with JavaScript.  Emacs on the other hand is just flat
+;; out broken by default.  The builitin js2-mode cannot even handle
+;; modern syntax, and as a result it sprays errors and red underlines
+;; all over the place.  To make matters worse, modern JS syntax is
+;; extensible with tools like babel, and so it will never be able to
+;; catch up with a one-size-fits-all solution.  Throw on top of
+;; _that_, the fact that in the course of your average JS project,
+;; you're likely to encounter not just `.js' files, but also `.jsx',
+;; `.ts', and `.tsx' as well.  You don't want to have to wonder why
+;; your editor is broken or stop to google for 2 hours just in order
+;; to work with a JS project you just cloned from github.  What you
+;; need is a setup that can handle whatever the JS ecosystem throws
+;; at you.
+;;
+;; Enter `frontside-javascript'.  The goal is simple: any JavaScript
+;; project you care to download you should just work straight away, no
+;; matter if it contains TypeScript, React, Node, ES6, Deno, or
+;; whatever; now and going forward.   By work, it means it should:
+;;
+;;   1. Be able to understand the syntax as defined by the project
+;;      itself, not a global concept of JavaScript syntax.
+;;   2. Highlight errors based ond the configured style of the
+;;      project itself.
+;;   3. Have completions, documentations, and refactoring at the
+;;      current point based on the sources of the current project.
+;;   4. find and navigate to symbolic references
+;;
+;; Usage:
+;;
+;; (require 'frontside-javascript)
+;; (frontside/javascript)
+;;; Code:
+
+;;;###autoload
+(defun frontside/javascript()
+  "Make Emacs have your back no matter what JavaScript project you'refaced with.
+This is the main entry point which configures JS, JSX, TS, TSX, and NodeJS development"
+  (interactive)
+
+  (require 'js2-mode)
+  (require 'rjsx-mode)
+  (require 'js2-refactor)
+  (require 'tide)
+  (require 'web-mode)
+
+  ;; use rjsx-mode for all JS files, since js2-mode simply does not
+  ;; cut it anymore.
+  (add-to-list 'auto-mode-alist '("\\.js\\'"    . rjsx-mode))
+  (add-to-list 'auto-mode-alist '("\\.mjs\\'"    . rjsx-mode))
+  (add-to-list 'auto-mode-alist '("\\.pac\\'"   . rjsx-mode))
+  (add-to-list 'interpreter-mode-alist '("node" . rjsx-mode))
+
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.mdx\\'" . web-mode))
+
+  ;; We use js2r-refactor-mode which implies using js2-mode.
+  ;; see https://github.com/magnars/js2-refactor.el
+  ;;
+  ;; all refactorings start with C-c C-r (for refactor)
+  (js2r-add-keybindings-with-prefix "C-c C-r")
+
+  (add-hook 'js2-mode-hook #'frontside/js2-mode-hook)
+  (add-hook 'typescript-mode-hook #'frontside/typescript-mode-hook)
+  (add-hook 'web-mode-hook #'frontside/tsx-web-mode-hook)
+
+
+  (frontside/node))
+
+
+(defun frontside/js2-mode-hook()
+  "Setup javascript buffers.
+Since rjsx-mode is derived from js2-mode this will also run there."
+
+  ;; setup js2-refactor mode in order to get symbol navigation and
+  ;; renaming. Eventually, this will be relpaced with LSP.
+  (js2-refactor-mode)
+
+
+  ;; disable the default js2-mode errors and warnings since js2-mode
+  ;; nowadays simply does not get the errors and warnings right.
+  (defvar js2-mode-show-parse-errors)
+  (defvar js2-mode-show-strict-warnings)
+  (setq js2-mode-show-parse-errors nil)
+  (setq js2-mode-show-strict-warnings nil)
+
+  ;; instead, make sure we're using flycheck
+  (flycheck-mode +1)
+
+  ;; Most projects use either eslint, prettier, or .editorconfig in
+  ;; order to specify indent level and formatting. In the event that
+  ;; no project-level config is specified (very rarely these days),
+  ;; the community default is 2, not 4.
+  (defvar js-indent-level)
+  (defvar js2-basic-offset)
+  (setq js-indent-level 2)
+  (setq js2-basic-offset 2))
+
+
+(defun frontside/typescript-mode-hook()
+  "Setup typescript buffers to use TIDE.
+typescript-mode.el is very barebones, but the expectation around
+  TypeScript is that you will have really great error highlighting,
+  type-inspection, completion, symbol navigation, and project-wide
+  refactorings.  Provide this with TIDE."
+  (require 'tide)
+  (require 'company)
+  (tide-setup)
+
+  ;; use flycheck to highlight syntax errors.
+  (flycheck-mode +1)
+  (defvar flycheck-check-syntax-automatically)
+  (setq flycheck-check-syntax-automatically
+        '(save idle-change new-line mode-enabled))
+
+  ;; whenever you hover over a variable, show its type in the minibuffer
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+
+  ;; enable completion. This is an expectation for typescript
+  (company-mode +1)
+
+  ;; Make TypesScript annotations look coherent when appearing in a
+  ;; completion popup.
+  (defvar company-tooltip-align-annotations)
+  (set (make-local-variable 'company-tooltip-align-annotations) t)
+
+  ;; Most projects use either eslint, prettier, .editorconfig, or tsf in
+  ;; order to specify indent level and formatting. In the event that
+  ;; no project-level config is specified (very rarely these days),
+  ;; the community default is 2, not 4. However, respect what is in
+  ;; tsfmt.json if it is present in the project
+  (defvar typescript-indent-level)
+  (setq typescript-indent-level
+        (or (plist-get (tide-tsfmt-options) ':indentSize) 2)))
+
+
+(defun frontside/tsx-web-mode-hook()
+  "Setup web mode for handling TSX.
+There isn't anything like rjsx-mode for TypeScript, so instead of
+using typescript-mode as the major mode (which loses its mind when it
+sees TSX code), we use web-mode, but load and configure TIDE in order
+to enable refactoring."
+
+  (when (string-equal "tsx" (file-name-extension buffer-file-name))
+
+    ;; we're enabling tide-mode, but we're in web-mode, so we don't
+    ;; want to use the tsx,jsx checkers
+    (defvar flycheck-disabled-checkers)
+    (setq flycheck-disabled-checkers (list 'tsx-tide 'jsx-tide))
+
+    (frontside/typescript-mode-hook)))
+
+
+(defun frontside/node()
+  "Make Emacs friendly for node develpment."
+  ;;; parse node.js stack traces in compilation buffer.s
+  (require 'compile)
+  (defvar compilation-error-regexp-alist)
+  (defvar compilation-error-regexp-alist-alist)
+  (add-to-list 'compilation-error-regexp-alist 'node)
+  (add-to-list 'compilation-error-regexp-alist-alist
+               '(node "^[[:blank:]]*at \\(.*(\\|\\)\\(.+?\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\)" 2 3 4))
+
+  ;; Specific versions of node packages installed on a per-project
+  ;; basis are the norm in JS development. So, for example, if you're
+  ;; using `eslint' to stylecheck your code, this will make project
+  ;; buffers find `node_modules/.bin/eslint' before any other
+  ;; executable in their `exec-path'
+  (require 'add-node-modules-path)
+  (add-hook 'prog-mode-hook #'add-node-modules-path))
+
+(provide 'frontside-javascript)
+;;; frontside-javascript.el ends here

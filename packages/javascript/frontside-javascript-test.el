@@ -11,7 +11,7 @@
  (before-all
   (require 'shut-up)
   (require 'frontside-javascript)
-  (frontside/javascript))
+  (frontside-javascript))
 
  (describe "opening a JS buffer"
            (before-each (find-file "myfile.js"))

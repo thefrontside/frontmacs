@@ -2,8 +2,8 @@
 
 ;; Author: Frontside Engineering <engineering@frontside.com>
 ;; Version: 1.0.0
-;; Package-Requires: (add-node-modules-path company flycheck js2-mode js2-refactor rjsx-mode tide web-mode)
-;; Keywords: javascript, typescript, jsx, mdx
+;; Package-Requires: ((emacs "25.1") (add-node-modules-path "1.2.0") (company "0.9.2") (flycheck "20201228.2104") (js2-mode "20201220") (js2-refactor "0.9.0") (rjsx-mode "0.5.0") (tide "4.0.2") (web-mode "17"))
+;; Keywords: files, tools
 ;; URL: https://github.com/frontside/frontmacs
 
 ;;; Commentary:
@@ -46,7 +46,7 @@
 ;;; Code:
 
 ;;;###autoload
-(defun frontside/javascript()
+(defun frontside-javascript()
   "Make Emacs have your back no matter what JavaScript project you'refaced with.
 This is the main entry point which configures JS, JSX, TS, TSX, and NodeJS development"
   (interactive)
@@ -73,17 +73,16 @@ This is the main entry point which configures JS, JSX, TS, TSX, and NodeJS devel
   ;; all refactorings start with C-c C-r (for refactor)
   (js2r-add-keybindings-with-prefix "C-c C-r")
 
-  (add-hook 'js2-mode-hook #'frontside/js2-mode-hook)
-  (add-hook 'typescript-mode-hook #'frontside/typescript-mode-hook)
-  (add-hook 'web-mode-hook #'frontside/tsx-web-mode-hook)
+  (add-hook 'js2-mode-hook #'frontside-javascript--js2-mode-hook)
+  (add-hook 'typescript-mode-hook #'frontside-javascript--typescript-mode-hook)
+  (add-hook 'web-mode-hook #'frontside-javascript--tsx-web-mode-hook)
+
+  (frontside-javascript--node))
 
 
-  (frontside/node))
-
-
-(defun frontside/js2-mode-hook()
+(defun frontside-javascript--js2-mode-hook()
   "Setup javascript buffers.
-Since rjsx-mode is derived from js2-mode this will also run there."
+Since `rjsx-mode' is derived from `js2-mode' this will also run there."
 
   ;; setup js2-refactor mode in order to get symbol navigation and
   ;; renaming. Eventually, this will be relpaced with LSP.
@@ -110,7 +109,7 @@ Since rjsx-mode is derived from js2-mode this will also run there."
   (setq js2-basic-offset 2))
 
 
-(defun frontside/typescript-mode-hook()
+(defun frontside-javascript--typescript-mode-hook()
   "Setup typescript buffers to use TIDE.
 typescript-mode.el is very barebones, but the expectation around
   TypeScript is that you will have really great error highlighting,
@@ -148,11 +147,11 @@ typescript-mode.el is very barebones, but the expectation around
         (or (plist-get (tide-tsfmt-options) ':indentSize) 2)))
 
 
-(defun frontside/tsx-web-mode-hook()
+(defun frontside-javascript--tsx-web-mode-hook()
   "Setup web mode for handling TSX.
-There isn't anything like rjsx-mode for TypeScript, so instead of
-using typescript-mode as the major mode (which loses its mind when it
-sees TSX code), we use web-mode, but load and configure TIDE in order
+There isn't anything like `rjsx-mode' for TypeScript, so instead of
+using `typescript-mode' as the major mode (which loses its mind when it
+sees TSX code), we use `web-mode', but load and configure TIDE in order
 to enable refactoring."
 
   (when (string-equal "tsx" (file-name-extension buffer-file-name))
@@ -162,10 +161,10 @@ to enable refactoring."
     (defvar flycheck-disabled-checkers)
     (setq flycheck-disabled-checkers (list 'tsx-tide 'jsx-tide))
 
-    (frontside/typescript-mode-hook)))
+    (frontside-javascript--typescript-mode-hook)))
 
 
-(defun frontside/node()
+(defun frontside-javascript--node()
   "Make Emacs friendly for node develpment."
   ;;; parse node.js stack traces in compilation buffer.s
   (require 'compile)

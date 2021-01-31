@@ -41,8 +41,7 @@
 ;;
 ;; Usage:
 ;;
-;; (require 'frontside-javascript)
-;; (frontside/javascript)
+;; (frontside-javascript)
 ;;; Code:
 
 ;;;###autoload
@@ -51,34 +50,31 @@
 This is the main entry point which configures JS, JSX, TS, TSX, and NodeJS development"
   (interactive)
 
+  (frontside-javascript--javascript)
+  (frontside-javascript--typescript)
+  (frontside-javascript--node))
+
+
+(defun frontside-javascript--javascript()
+  "Setup for working with JavaScript."
+
   (require 'js2-mode)
-  (require 'rjsx-mode)
   (require 'js2-refactor)
-  (require 'tide)
-  (require 'web-mode)
+  (require 'rjsx-mode)
 
-  ;; use rjsx-mode for all JS files, since js2-mode simply does not
-  ;; cut it anymore.
-  (add-to-list 'auto-mode-alist '("\\.js\\'"    . rjsx-mode))
-  (add-to-list 'auto-mode-alist '("\\.mjs\\'"    . rjsx-mode))
-  (add-to-list 'auto-mode-alist '("\\.pac\\'"   . rjsx-mode))
-  (add-to-list 'interpreter-mode-alist '("node" . rjsx-mode))
-
-  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.mdx\\'" . web-mode))
-
-  ;; We use js2r-refactor-mode which implies using js2-mode.
+  ;; Use js2r-refactor-mode which implies using js2-mode.
   ;; see https://github.com/magnars/js2-refactor.el
   ;;
   ;; all refactorings start with C-c C-r (for refactor)
   (js2r-add-keybindings-with-prefix "C-c C-r")
 
-  (add-hook 'js2-mode-hook #'frontside-javascript--js2-mode-hook)
-  (add-hook 'typescript-mode-hook #'frontside-javascript--typescript-mode-hook)
-  (add-hook 'web-mode-hook #'frontside-javascript--tsx-web-mode-hook)
+  ;; use rjsx-mode for all JS files, since js-mode and js2-mode simply does not
+  ;; cut it anymore.
+  (add-to-list 'auto-mode-alist '("\\.js\\'"    . rjsx-mode))
+  (add-to-list 'auto-mode-alist '("\\.mjs\\'"    . rjsx-mode))
+  (add-to-list 'auto-mode-alist '("\\.pac\\'"   . rjsx-mode))
 
-  (frontside-javascript--node))
-
+  (add-hook 'js2-mode-hook #'frontside-javascript--js2-mode-hook))
 
 (defun frontside-javascript--js2-mode-hook()
   "Setup javascript buffers.
@@ -108,6 +104,26 @@ Since `rjsx-mode' is derived from `js2-mode' this will also run there."
   (setq js-indent-level 2)
   (setq js2-basic-offset 2))
 
+
+(defun frontside-javascript--typescript()
+  "Setup working with TypeScript."
+
+  (require 'flycheck)
+  (require 'tide)
+  (require 'web-mode)
+
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.mdx\\'" . web-mode))
+
+
+  (add-hook 'typescript-mode-hook #'frontside-javascript--typescript-mode-hook)
+  (add-hook 'web-mode-hook #'frontside-javascript--tsx-web-mode-hook)
+
+  ;; enable javascript-eslint checker since nowadays the eslint project is used
+  ;; to check _both_ JavaScript AND TypeScript.
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
+  (flycheck-add-mode 'javascript-eslint 'typescript-mode)
+  (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append))
 
 (defun frontside-javascript--typescript-mode-hook()
   "Setup typescript buffers to use TIDE.
@@ -166,8 +182,15 @@ to enable refactoring."
 
 (defun frontside-javascript--node()
   "Make Emacs friendly for node develpment."
-  ;;; parse node.js stack traces in compilation buffer.s
+
+;;; parse node.js stack traces in compilation buffer.s
   (require 'compile)
+  (require 'rjsx-mode)
+
+  ;; for shebang scripts that use node as the interpreter
+  ;; use rjsx-mode
+  (add-to-list 'interpreter-mode-alist '("node" . rjsx-mode))
+
   (defvar compilation-error-regexp-alist)
   (defvar compilation-error-regexp-alist-alist)
   (add-to-list 'compilation-error-regexp-alist 'node)

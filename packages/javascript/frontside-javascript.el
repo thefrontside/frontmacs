@@ -1,4 +1,4 @@
-;;; frontside-javascript.el --- JS  development that just work™️.
+;;; frontside-javascript.el --- JS  development that just work™️ -*-lexical-binding:t-*-
 
 ;; Author: Frontside Engineering <engineering@frontside.com>
 ;; Version: 1.0.0

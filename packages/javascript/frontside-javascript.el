@@ -1,5 +1,8 @@
 ;;; frontside-javascript.el --- JS  development that just work™️ -*-lexical-binding:t-*-
 
+;; Copyright (C) 2021 The Frontside Software, Inc.
+;; See LICENSE for details
+
 ;; Author: Frontside Engineering <engineering@frontside.com>
 ;; Version: 1.0.0
 ;; Package-Requires: ((emacs "25.1") (add-node-modules-path "1.2.0") (company "0.9.2") (flycheck "20201228.2104") (js2-mode "20201220") (js2-refactor "0.9.0") (rjsx-mode "0.5.0") (tide "4.0.2") (web-mode "17"))

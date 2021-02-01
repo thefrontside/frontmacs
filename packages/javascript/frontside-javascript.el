@@ -1,7 +1,7 @@
 ;;; frontside-javascript.el --- JS  development that just work™️ -*-lexical-binding:t-*-
 
 ;; Copyright (C) 2021 The Frontside Software, Inc.
-;; See LICENSE for details
+;; SPDX-License-Identifier: MIT
 
 ;; Author: Frontside Engineering <engineering@frontside.com>
 ;; Version: 1.0.0

@@ -1,0 +1,6 @@
+(frontside-system
+ :fetcher github
+ :repo "thefrontside/frontmacs"
+ :branch "revamp"
+ :files ("packages/system/*.el"
+         (:exclude "packages/system/*-test.el")))

@@ -47,6 +47,17 @@
 ;; (frontside-javascript)
 ;;; Code:
 
+(require 'js2-mode)
+(require 'js2-refactor)
+(require 'rjsx-mode)
+(require 'flycheck)
+(require 'tide)
+(require 'web-mode)
+(require 'tide)
+(require 'company)
+(require 'compile)
+(require 'add-node-modules-path)
+
 ;;;###autoload
 (defun frontside-javascript()
   "Make Emacs have your back no matter what JavaScript project you'refaced with.
@@ -61,9 +72,6 @@ This is the main entry point which configures JS, JSX, TS, TSX, and NodeJS devel
 (defun frontside-javascript--javascript()
   "Setup for working with JavaScript."
 
-  (require 'js2-mode)
-  (require 'js2-refactor)
-  (require 'rjsx-mode)
 
   ;; Use js2r-refactor-mode which implies using js2-mode.
   ;; see https://github.com/magnars/js2-refactor.el
@@ -90,8 +98,6 @@ Since `rjsx-mode' is derived from `js2-mode' this will also run there."
 
   ;; disable the default js2-mode errors and warnings since js2-mode
   ;; nowadays simply does not get the errors and warnings right.
-  (defvar js2-mode-show-parse-errors)
-  (defvar js2-mode-show-strict-warnings)
   (setq js2-mode-show-parse-errors nil)
   (setq js2-mode-show-strict-warnings nil)
 
@@ -102,8 +108,6 @@ Since `rjsx-mode' is derived from `js2-mode' this will also run there."
   ;; order to specify indent level and formatting. In the event that
   ;; no project-level config is specified (very rarely these days),
   ;; the community default is 2, not 4.
-  (defvar js-indent-level)
-  (defvar js2-basic-offset)
   (setq js-indent-level 2)
   (setq js2-basic-offset 2))
 
@@ -111,9 +115,6 @@ Since `rjsx-mode' is derived from `js2-mode' this will also run there."
 (defun frontside-javascript--typescript()
   "Setup working with TypeScript."
 
-  (require 'flycheck)
-  (require 'tide)
-  (require 'web-mode)
 
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.mdx\\'" . web-mode))
@@ -134,13 +135,10 @@ typescript-mode.el is very barebones, but the expectation around
   TypeScript is that you will have really great error highlighting,
   type-inspection, completion, symbol navigation, and project-wide
   refactorings.  Provide this with TIDE."
-  (require 'tide)
-  (require 'company)
   (tide-setup)
 
   ;; use flycheck to highlight syntax errors.
   (flycheck-mode +1)
-  (defvar flycheck-check-syntax-automatically)
   (setq flycheck-check-syntax-automatically
         '(save idle-change new-line mode-enabled))
 
@@ -153,7 +151,6 @@ typescript-mode.el is very barebones, but the expectation around
 
   ;; Make TypesScript annotations look coherent when appearing in a
   ;; completion popup.
-  (defvar company-tooltip-align-annotations)
   (set (make-local-variable 'company-tooltip-align-annotations) t)
 
   ;; Most projects use either eslint, prettier, .editorconfig, or tsf in
@@ -161,7 +158,6 @@ typescript-mode.el is very barebones, but the expectation around
   ;; no project-level config is specified (very rarely these days),
   ;; the community default is 2, not 4. However, respect what is in
   ;; tsfmt.json if it is present in the project
-  (defvar typescript-indent-level)
   (setq typescript-indent-level
         (or (plist-get (tide-tsfmt-options) ':indentSize) 2)))
 
@@ -177,7 +173,6 @@ to enable refactoring."
 
     ;; we're enabling tide-mode, but we're in web-mode, so we don't
     ;; want to use the tsx,jsx checkers
-    (defvar flycheck-disabled-checkers)
     (setq flycheck-disabled-checkers (list 'tsx-tide 'jsx-tide))
 
     (frontside-javascript--typescript-mode-hook)))
@@ -186,16 +181,11 @@ to enable refactoring."
 (defun frontside-javascript--node()
   "Make Emacs friendly for node develpment."
 
-;;; parse node.js stack traces in compilation buffer.s
-  (require 'compile)
-  (require 'rjsx-mode)
-
   ;; for shebang scripts that use node as the interpreter
   ;; use rjsx-mode
   (add-to-list 'interpreter-mode-alist '("node" . rjsx-mode))
 
-  (defvar compilation-error-regexp-alist)
-  (defvar compilation-error-regexp-alist-alist)
+  ;; parse node.js stack traces in compilation buffer.s
   (add-to-list 'compilation-error-regexp-alist 'node)
   (add-to-list 'compilation-error-regexp-alist-alist
                '(node "^[[:blank:]]*at \\(.*(\\|\\)\\(.+?\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\)" 2 3 4))
@@ -205,7 +195,6 @@ to enable refactoring."
   ;; using `eslint' to stylecheck your code, this will make project
   ;; buffers find `node_modules/.bin/eslint' before any other
   ;; executable in their `exec-path'
-  (require 'add-node-modules-path)
   (add-hook 'prog-mode-hook #'add-node-modules-path))
 
 (provide 'frontside-javascript)

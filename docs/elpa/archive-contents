@@ -1,0 +1,2 @@
+(1
+ (frontside-system . [(20210205 2136) ((exec-path-from-shell (0)) (emacs (25 1))) "Optimize Emacs for your operating system️" tar ((:commit . "e8a84875b1ffb8b7bb263fa1c5e0cf8df55289f1") (:authors ("Frontside Engineering" . "engineering@frontside.com")) (:maintainer "Frontside Engineering" . "engineering@frontside.com") (:keywords "files" "tools") (:url . "https://github.com/frontside/frontmacs"))]))

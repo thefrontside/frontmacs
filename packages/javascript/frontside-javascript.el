@@ -32,7 +32,7 @@
 ;; Enter `frontside-javascript'.  The goal is simple: any JavaScript
 ;; project you care to download you should just work straight away, no
 ;; matter if it contains TypeScript, React, Node, ES6, Deno, or
-;; whatever; now and going forward.   By work, it means it should:
+;; whatever; now and going forward.  By work, it means it should:
 ;;
 ;;   1. Be able to understand the syntax as defined by the project
 ;;      itself, not a global concept of JavaScript syntax.

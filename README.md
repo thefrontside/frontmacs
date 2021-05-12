@@ -1,8 +1,8 @@
 # Frontmacs
 
-[![ELPA Version](https://cdn.rawgit.com/thefrontside/frontmacs/master/elpa.svg?raw=true)](http://elpa.frontside.io/archive-contents)
-[![Build Status](https://travis-ci.org/thefrontside/frontmacs.svg?branch=master)](https://travis-ci.org/thefrontside/frontmacs)
-[![Join the chat at https://gitter.im/thefrontside/frontmacs](https://badges.gitter.im/thefrontside/frontmacs.svg)](https://gitter.im/thefrontside/frontmacs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://circleci.com/gh/thefrontside/frontmacs.svg?style=shield)](https://app.circleci.com/pipelines/github/thefrontside/frontmacs?branch=release)
+[![Chat on Discord](https://img.shields.io/discord/700803887132704931?Label=Discord)](https://discord.gg/JNnzuSSSb4)
+[![Created by Frontside](https://img.shields.io/badge/created%20by-frontside-26abe8.svg)](https://frontside.com)
 
 A _package-based_, web-centric, customizable, awesome-by-default,
 acceptance-tested Emacs distribution curated by your friends at
@@ -160,7 +160,7 @@ $ cask install
 $ make runlocal
 ```
 
-[frontside]: http://frontside.io
+[frontside]: http://frontside.com
 [2]: https://github.com/technomancy/emacs-starter-kit
 [3]: https://github.com/bbatsov/prelude
 [4]: http://spacemacs.org/

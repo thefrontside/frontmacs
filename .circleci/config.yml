@@ -8,10 +8,17 @@ jobs:
       - image: silex/emacs:27-ci-cask
     steps:
       - checkout
+
+      # install nodejs which is needed to setup tide-mode
+      - run: curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+      - run: apt-get install -y nodejs
+
+      # install packages
       - run:
           command: cask install
           working_directory: ~/project/packages/javascript
 
+      # run tests
       - run:
           command: cask exec buttercup
           working_directory: ~/project/packages/javascript

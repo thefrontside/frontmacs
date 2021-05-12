@@ -32,9 +32,9 @@
 
   (describe "opening a TSX buffer"
     (before-each (shut-up (find-file "myfile.tsx")))
-    (it "loads typescript mode"
+    (it "uses web mode"
       (expect major-mode :to-be 'web-mode))
-    (it "sets up tide within web-mode"
+    (it "sets up tide as a minor mode within web-mode"
       (expect minor-mode-list :to-contain 'tide-mode))))
 
 (provide 'frontside-javascript-test)

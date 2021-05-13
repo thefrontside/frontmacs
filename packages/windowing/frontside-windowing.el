@@ -17,7 +17,9 @@
 ;; 1. It's annoying when you're using a lot of multi-window flows and commands
 ;; that render their output in a separate window are constantly either
 ;; splitting horizontally, or sometimes they open above, or sometimes they
-;; open above.
+;; open three or four splits at a time.  Instead, you want the same
+;; splitting behavior for the same UI workflow no matter what the
+;; screen size.
 ;;
 ;; This makes the split consisent by always splitting horizontally by half.
 ;;
@@ -34,7 +36,7 @@
 
   ;; Split horizontally when opening a new window from a command
   ;; whenever possible.
-  (setq split-height-tHreshold nil)
+  (setq split-height-threshold nil)
 
   ;; recaculate split-width-threshold with every change
   (add-hook 'window-configuration-change-hook

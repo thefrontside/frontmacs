@@ -1,5 +1,5 @@
 ;; -*- eval: (flycheck-mode -1) -*-
-(define-package "frontmacs" "0.2.24" "Frontside config package for emacs"
+(define-package "frontmacs" "0.2.25" "Frontside config package for emacs"
   '((f "0.19.0")
     (editorconfig "0.8.0")
     (magit "2.8.0")
@@ -48,7 +48,6 @@
     (multiple-cursors "1.4.0")
     (drag-stuff "0.3.0")
     (lsp-mode "20190517.435")
-    (company-lsp "20190505.615")
     (dart-mode "1.0.4")
     (use-package "2.3")))
 

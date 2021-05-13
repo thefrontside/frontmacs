@@ -2,9 +2,9 @@
 
 Make window navigation consistent and intuitive.
 
-It's annoying when you're using a lot of multi-window flows  commands that render their output in a separate window are  either splitting horizontally, or sometimes they open above, or sometimes they open above.
+It's annoying when you're using a lot of multi-window flows  commands that render their output in a separate window are  either splitting horizontally, or sometimes they open above, or sometimes they open up a 3rd or 4th split. Yuck!
 
-This makes the split consisent wherever possible by always splitting vertically, and in half.
+This makes the split consisent wherever possible by always splitting vertically, and in half, no matter what the size of the screen size.
 
 In addition, this adds keybindings to make window navigation work similarly to tabbed navigation.
 

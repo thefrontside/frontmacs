@@ -1,4 +1,5 @@
-;;; frontside-windowing.el --- Provide a consisent windowing and window splitting experience -*-lexical-binding:t-*-
+;;; frontside-windowing.el --- Consistent windowing and window splitting experience
+;; -*-lexical-binding:t-*-
 
 ;; Copyright (C) 2021 The Frontside Software, Inc.
 ;; See LICENSE for details

@@ -197,5 +197,9 @@ to enable refactoring."
   ;; executable in their `exec-path'
   (add-hook 'prog-mode-hook #'add-node-modules-path))
 
+;; Make it so that you only need to say `(use-package frontside-javascript)`
+;;;###autoload
+(setq use-package--frontside-javascript--pre-config-hook #'frontside-javascript)
+
 (provide 'frontside-javascript)
 ;;; frontside-javascript.el ends here

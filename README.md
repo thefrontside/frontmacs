@@ -82,85 +82,13 @@ that critical behaviors are tested so that you won't get bad upgrades
 that ruin your day. If you do, you can run the test suite to find out
 exactly what went wrong and where.
 
----
+## Installation & Development
 
-## Installation
-
-Download the bootstrap script into your emacs directory
-
-```
-$ cd ~/.emacs.d
-$ wget https://raw.githubusercontent.com/thefrontside/frontmacs/master/scripts/init-frontmacs.el
-```
-
-add the following lines to the top of your `init.el`:
-
-``` emacs-lisp
-;; boot frontmacs
-(load (expand-file-name "init-frontmacs.el" user-emacs-directory))
-```
-
-Restart your Emacs and away you go!
-
----
-
-## Configuration
-
-Frontmacs will create several files and directories in your Emacs
-directory (usually `$HOME/.emacs.d`) to help with configuration and
-initialization. The first is `config.el` This file is loaded _before_
-Frontmacs actually initializes, and so it's a chance to set any
-well defined customizations. But don't worry, Frontmacs will generate
-this file for you so that you can see what all configuration variables
-are available.
-
-For everything else, there are all of the files contained in
-`$HOME/.emacs.d/initializers`. Every elisp file contained in this
-directory will be evaluated _after_ Frontmacs has been fully
-configured and initialized, so settings made in these files will
-override anything that comes with Frontmacs out of the box. For
-example, you can create your Ruby configuration with a file called:
-
-`$HOME/.emacs.d/initializers/ruby.el`
-
-``` emacs-lisp
-(eval-after-load 'rspec-mode
-  '(rspec-install-snippets))
-
-(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
-```
-
-Just drop any `.el` file into the `initializers/` directory, and
-Frontmacs will evaluate it.
-
-> Note: When in doubt about whether you should put something in `config.el` or a
-> custom initializer, use an initializer.
-
----
-
-## Development
-
-You will need a patched version of `Cask` to do development on.
-
-```
-$ git clone -b specify-package-descriptor --depth=1 https://github.com/cowboyd/cask.git $HOME/.cask
-$ export PATH=$HOME/.cask/bin:$PATH
-```
-
-### install dependencies
-
-```
-$ cask install
-```
-
-### Run an emacs using nothing but the local frontmacs
-
-```
-$ make runlocal
-```
+It's in a state of intense flux at the moment, so if you're down for
+the roller-coaster, get in touch on [DISCORD][discord].
 
 [frontside]: http://frontside.com
+[discord]: https://discord.com/invite/JNnzuSSSb4
 [2]: https://github.com/technomancy/emacs-starter-kit
 [3]: https://github.com/bbatsov/prelude
 [4]: http://spacemacs.org/

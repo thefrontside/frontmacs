@@ -17,7 +17,18 @@
   (describe "opening a JS buffer"
     (before-each (find-file "myfile.js"))
     (it "loads rjsx-mode"
-      (expect major-mode :to-be 'rjsx-mode)))
+      (expect major-mode :to-be 'rjsx-mode))
+    (describe "inserting some unformatted text and then formatting it"
+      (before-each
+        (shut-up
+         (insert "{\nfoo: \"bar\"\n}")
+         (activate-mark)
+         (mark-whole-buffer)
+         (indent-for-tab-command)))
+      (it "requires this spec for the next one to pass 🤷" t)
+
+      (it "indents to 2 spaces by default"
+        (expect (buffer-substring 3 8) :to-equal "  foo"))))
 
   (describe "opening a JSX buffer"
     (before-each

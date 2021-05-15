@@ -72,6 +72,9 @@ This is the main entry point which configures JS, JSX, TS, TSX, and NodeJS devel
 (defun frontside-javascript--javascript()
   "Setup for working with JavaScript."
 
+  ;; 2 space tab width
+  (custom-set-default 'js-indent-level 2)
+  (custom-set-default 'js2-basic-offset 2)
 
   ;; Use js2r-refactor-mode which implies using js2-mode.
   ;; see https://github.com/magnars/js2-refactor.el

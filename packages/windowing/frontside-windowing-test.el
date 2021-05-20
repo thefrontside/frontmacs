@@ -12,7 +12,7 @@
   (before-all ;; arrange
     (require 'shut-up)
     (require 'frontside-windowing)
-    (frontside-windowing))
+    (frontside-windowing +1))
 
   (before-each ;; act
     (set-frame-size (selected-frame) 800 600)

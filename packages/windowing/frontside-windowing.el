@@ -1,8 +1,7 @@
-;;; frontside-windowing.el --- Consistent windowing and window splitting experience
-;; -*-lexical-binding:t-*-
+;;; frontside-windowing.el --- Consistent windowing and window splitting experience -*-lexical-binding:t-*-
 
 ;; Copyright (C) 2021 The Frontside Software, Inc.
-;; See LICENSE for details
+;; SPDX-License-Identifier: MIT
 
 ;; Author: Frontside Engineering <engineering@frontside.com>
 ;; Version: 1.0.0
@@ -11,53 +10,62 @@
 ;; URL: https://github.com/frontside/frontmacs/packages/windowing
 
 ;;; Commentary:
-;;
+
 ;; Make window navigation consistent and intuitive.
-;;
+
 ;; 1. It's annoying when you're using a lot of multi-window flows and commands
 ;; that render their output in a separate window are constantly either
 ;; splitting horizontally, or sometimes they open above, or sometimes they
 ;; open three or four splits at a time.  Instead, you want the same
 ;; splitting behavior for the same UI workflow no matter what the
 ;; screen size.
-;;
+
 ;; This makes the split consisent by always splitting horizontally by half.
-;;
+
 ;; 2. Add keybindings so that window navigation works similar to tabbed navigation
 ;; 3. Aesthetic fixes such as removing double-rendered scroll bars
 
 ;;; Code:
-(require 'windmove)
-(require 'scroll-bar)
+
+(define-minor-mode frontside-windowing-mode
+  "Make window splits dead simple and consistent"
+  :keymap (let ((keymap (make-sparse-keymap)))
+         (define-key keymap [remap split-window-below] #'frontside-windowing--vsplit-last-buffer)
+         (define-key keymap [remap split-window-right] #'frontside-windowing--hsplit-last-buffer)
+         keymap)
+  (if frontside-windowing-mode
+      (frontside-windowing-on)
+    (frontside-windowing-off)))
 
 ;;;###autoload
-(defun frontside-windowing()
+(define-globalized-minor-mode frontside-windowing frontside-windowing-mode
+  (lambda () (frontside-windowing-mode +1)))
+
+(defvar-local frontside-windowing-original-split-height-threshold
+  split-height-threshold
+  "A place to hold the original value of split-height-threshold in a buffer.
+This way, it can be reverted if for any reason this windowing mode is disabled")
+
+
+(defun frontside-windowing-off()
+  "reset everything to its original state"
+  (setq split-height-threshold
+        frontside-windowing-original-split-height-threshold)
+  (remove-hook 'window-configuration-change-hook
+               #'frontside-windowing--window-configuration-change-hook))
+
+(defun frontside-windowing-on()
   "Make working with windows consistent."
 
   ;; Split horizontally when opening a new window from a command
   ;; whenever possible.
-  (setq split-height-threshold nil)
+  (setq frontside-windowing-original-split-height-threshold
+        split-height-threshold)
+  (set (make-local-variable 'split-height-threshold) nil)
 
   ;; recaculate split-width-threshold with every change
   (add-hook 'window-configuration-change-hook
-            #'frontside-windowing--window-configuration-change-hook)
-
-  (global-set-key (kbd "C-x 2") #'frontside-windowing--vsplit-last-buffer)
-  (global-set-key (kbd "C-x 3") #'frontside-windowing--hsplit-last-buffer)
-
-  ;; disable menu-bar in terminal mode
-  (unless window-system
-    (menu-bar-mode -1))
-
-  ; disable startup screen
-  (setq inhibit-startup-screen t)
-
-  ;; use super (cmd) + arrow keys to switch between visible buffers
-  (windmove-default-keybindings 'super)
-
-  ;; Emacs provides its own scrollbars for everything. There is _zero_
-  ;; reason to have native scrollbars.
-  (scroll-bar-mode -1))
+            #'frontside-windowing--window-configuration-change-hook))
 
 (defun frontside-windowing--window-configuration-change-hook ()
   "Set the `split-width-threshold' so that the screen only splits once.

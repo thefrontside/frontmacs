@@ -20,7 +20,8 @@
 ;; splitting behavior for the same UI workflow no matter what the
 ;; screen size.
 
-;; This makes the split consisent by always splitting horizontally by half.
+;; This makes the split super simple and thereby consisent by always
+;; splitting horizontally by half.
 
 ;; 2. Add keybindings so that window navigation works similar to tabbed navigation
 ;; 3. Aesthetic fixes such as removing double-rendered scroll bars

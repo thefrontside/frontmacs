@@ -12,6 +12,8 @@ We've been using Emacs for years here at [Frontside][frontside], and
 have finally decided to share the configuration for our favorite
 editor with the world. Why did we make our own?
 
+![screenshot](https://raw.githubusercontent.com/rhoit/frontmacs/dump/screenshot.png)
+
 ### Package Based.
 
 We've been satisfied users of many a starter kit over the years, from

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 ;;; frontside-javascript-test.el --- Tests for frontside-javascript.
 
 ;;; Commentary:
@@ -28,7 +29,9 @@
       (it "requires this spec for the next one to pass 🤷" t)
 
       (it "indents to 2 spaces by default"
-        (expect (buffer-substring 3 8) :to-equal "  foo"))))
+        (expect (buffer-substring 3 8) :to-equal "  foo")))
+    (it "does not load lsp-mode"
+      (expect 'lsp-mode :not :to-be-enabled)))
 
   (describe "opening a JSX buffer"
     (before-each
@@ -46,7 +49,38 @@
     (it "uses web mode"
       (expect major-mode :to-be 'web-mode))
     (it "sets up tide as a minor mode within web-mode"
-      (expect minor-mode-list :to-contain 'tide-mode))))
+      (expect minor-mode-list :to-contain 'tide-mode)))
+
+  (describe "deno project development"
+    :var ((deno-project-root (expand-file-name "fixtures/deno-project")))
+    (before-all
+      (lsp-workspace-folders-add deno-project-root))
+    (it "can find the fixture"
+      (expect (file-exists-p (expand-file-name "deno.json" deno-project-root)) :to-be t))
+    (describe "opening a javascript file"
+      (before-each
+        (shut-up (find-file (expand-file-name "js-file.js" deno-project-root))))
+      (it "loads lsp-mode, not js2-refactor-mode"
+        (expect 'lsp-mode :to-be-enabled)
+        (expect 'js2-refactor-mode :not :to-be-enabled)))
+    (describe "opening a typescript file"
+      (before-each
+        (shut-up (find-file (expand-file-name "ts-file.ts" deno-project-root))))
+      (it "loads lsp-mode, not tide"
+        (expect 'lsp-mode :to-be-enabled)
+        (expect 'tide-mode :not :to-be-enabled)))
+    (describe "opening a TSX file"
+      (before-each
+        (shut-up (find-file (expand-file-name "tsx-file.tsx" deno-project-root))))
+      (it "loads lsp-mode, not tide"
+        (expect 'lsp-mode :to-be-enabled)
+        (expect 'tide-mode :not :to-be-enabled)))
+    (describe "opening a JSX file"
+      (before-each
+        (shut-up (find-file (expand-file-name "jsx-file.jsx" deno-project-root))))
+      (it "loads lsp-mode, not tide"
+        (expect 'lsp-mode :to-be-enabled)
+        (expect 'tide-mode :not :to-be-enabled)))))
 
 (provide 'frontside-javascript-test)
 ;;; frontside-javascript-test.el ends here

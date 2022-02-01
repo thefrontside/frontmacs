@@ -5,7 +5,7 @@
 
 ;; Author: Frontside Engineering <engineering@frontside.com>
 ;; Version: 1.0.0
-;; Package-Requires: ((emacs "25.1") (add-node-modules-path "1.2.0") (company "0.9.2") (flycheck "20201228.2104") (js2-mode "20201220") (js2-refactor "0.9.0") (rjsx-mode "0.5.0") (tide "4.0.2") (web-mode "17"))
+;; Package-Requires: ((emacs "25.1") (add-node-modules-path "1.2.0") (company "0.9.2") (flycheck "20201228.2104") (js2-mode "20201220") (js2-refactor "0.9.0") (rjsx-mode "0.5.0") (tide "4.0.2") (web-mode "17") (lsp-mode "20220124"))
 ;; Keywords: files, tools
 ;; URL: https://github.com/thefrontside/frontmacs
 
@@ -47,6 +47,8 @@
 ;; (frontside-javascript)
 ;;; Code:
 
+(require 'lsp)
+(require 'lsp-mode)
 (require 'js2-mode)
 (require 'js2-refactor)
 (require 'rjsx-mode)
@@ -94,25 +96,32 @@ This is the main entry point which configures JS, JSX, TS, TSX, and NodeJS devel
   "Setup javascript buffers.
 Since `rjsx-mode' is derived from `js2-mode' this will also run there."
 
-  ;; setup js2-refactor mode in order to get symbol navigation and
-  ;; renaming. Eventually, this will be relpaced with LSP.
-  (js2-refactor-mode)
-
-
-  ;; disable the default js2-mode errors and warnings since js2-mode
-  ;; nowadays simply does not get the errors and warnings right.
-  (setq js2-mode-show-parse-errors nil)
-  (setq js2-mode-show-strict-warnings nil)
-
-  ;; instead, make sure we're using flycheck
-  (flycheck-mode +1)
-
   ;; Most projects use either eslint, prettier, or .editorconfig in
   ;; order to specify indent level and formatting. In the event that
   ;; no project-level config is specified (very rarely these days),
   ;; the community default is 2, not 4.
   (setq js-indent-level 2)
-  (setq js2-basic-offset 2))
+  (setq js2-basic-offset 2)
+
+  (cond
+   ;; If this is a Deno project, use lsp-mode
+   ((frontside-javascript--deno-project-p)
+    (lsp 1))
+
+   ;; Otherwise, we use the old js2-refactor testup
+   (t
+    ;; setup js2-refactor mode in order to get symbol navigation and
+    ;; renaming. Eventually, this will be relpaced with LSP.
+    (js2-refactor-mode)
+
+
+    ;; disable the default js2-mode errors and warnings since js2-mode
+    ;; nowadays simply does not get the errors and warnings right.
+    (setq js2-mode-show-parse-errors nil)
+    (setq js2-mode-show-strict-warnings nil)
+
+    ;; instead, make sure we're using flycheck
+    (flycheck-mode +1))))
 
 
 (defun frontside-javascript--typescript()
@@ -138,23 +147,6 @@ typescript-mode.el is very barebones, but the expectation around
   TypeScript is that you will have really great error highlighting,
   type-inspection, completion, symbol navigation, and project-wide
   refactorings.  Provide this with TIDE."
-  (tide-setup)
-
-  ;; use flycheck to highlight syntax errors.
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically
-        '(save idle-change new-line mode-enabled))
-
-  ;; whenever you hover over a variable, show its type in the minibuffer
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-
-  ;; enable completion. This is an expectation for typescript
-  (company-mode +1)
-
-  ;; Make TypesScript annotations look coherent when appearing in a
-  ;; completion popup.
-  (set (make-local-variable 'company-tooltip-align-annotations) t)
 
   ;; Most projects use either eslint, prettier, .editorconfig, or tsf in
   ;; order to specify indent level and formatting. In the event that
@@ -162,7 +154,29 @@ typescript-mode.el is very barebones, but the expectation around
   ;; the community default is 2, not 4. However, respect what is in
   ;; tsfmt.json if it is present in the project
   (setq typescript-indent-level
-        (or (plist-get (tide-tsfmt-options) ':indentSize) 2)))
+        (or (plist-get (tide-tsfmt-options) ':indentSize) 2))
+
+  ;; use flycheck to highlight syntax errors.
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically
+        '(save idle-change new-line mode-enabled))
+
+  (cond ((frontside-javascript--deno-project-p)
+         (lsp))
+        (t
+         (tide-setup)
+
+
+         ;; whenever you hover over a variable, show its type in the minibuffer
+         (eldoc-mode +1)
+         (tide-hl-identifier-mode +1)
+
+         ;; enable completion. This is an expectation for typescript
+         (company-mode +1)
+
+         ;; Make TypesScript annotations look coherent when appearing in a
+         ;; completion popup.
+         (set (make-local-variable 'company-tooltip-align-annotations) t))))
 
 
 (defun frontside-javascript--tsx-web-mode-hook()
@@ -199,6 +213,10 @@ to enable refactoring."
   ;; buffers find `node_modules/.bin/eslint' before any other
   ;; executable in their `exec-path'
   (add-hook 'prog-mode-hook #'add-node-modules-path))
+
+(defun frontside-javascript--deno-project-p ()
+  "Is the current file inside a deno project"
+  (locate-dominating-file buffer-file-name "deno.json"))
 
 ;; Make it so that you only need to say `(use-package frontside-javascript)`
 ;;;###autoload

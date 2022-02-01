@@ -22,7 +22,13 @@ jobs:
             equal: ["javascript", <<parameters.package>>]
           steps:
             - node/install:
-                install-npm: false  
+                install-npm: false
+            - run: apt-get update
+            - run: apt-get install unzip
+            - run: curl -fsSL https://deno.land/install.sh | sh
+            - run: ln -s /root/.deno/bin/deno /bin/deno
+
+
 
       # restore cach
       - restore_cache:

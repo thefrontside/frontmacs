@@ -188,9 +188,11 @@ to enable refactoring."
 
   (when (string-equal "tsx" (file-name-extension buffer-file-name))
 
-    ;; we're enabling tide-mode, but we're in web-mode, so we don't
-    ;; want to use the tsx,jsx checkers
-    (setq flycheck-disabled-checkers (list 'tsx-tide 'jsx-tide))
+    ;; we're enabling tide-mode, but we're in web-mode, so need to
+    ;; configure proper checkers
+
+    (setq flycheck-disabled-checkers nil)
+    (flycheck-add-next-checker 'tsx-tide 'javascript-eslint)
 
     (frontside-javascript--typescript-mode-hook)))
 

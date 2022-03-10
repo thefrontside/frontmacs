@@ -135,11 +135,16 @@ Since `rjsx-mode' is derived from `js2-mode' this will also run there."
   (add-hook 'typescript-mode-hook #'frontside-javascript--typescript-mode-hook)
   (add-hook 'web-mode-hook #'frontside-javascript--tsx-web-mode-hook)
 
-  ;; enable javascript-eslint checker since nowadays the eslint project is used
-  ;; to check _both_ JavaScript AND TypeScript.
+  ;; enable javascript-eslint checker to run after tide checkers. Tide checker
+  ;; highlights syntax errors, and javascript eslint checker highlights linter
+  ;; warnings
+  ;; https://github.com/thefrontside/frontmacs/issues/156
   (flycheck-add-mode 'javascript-eslint 'web-mode)
   (flycheck-add-mode 'javascript-eslint 'typescript-mode)
-  (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append))
+
+  (flycheck-add-next-checker 'typescript-tide 'javascript-eslint)
+  (flycheck-add-next-checker 'tsx-tide 'javascript-eslint)
+  (flycheck-add-next-checker 'jsx-tide 'javascript-eslint))
 
 (defun frontside-javascript--typescript-mode-hook()
   "Setup typescript buffers to use TIDE.
@@ -187,13 +192,6 @@ sees TSX code), we use `web-mode', but load and configure TIDE in order
 to enable refactoring."
 
   (when (string-equal "tsx" (file-name-extension buffer-file-name))
-
-    ;; we're enabling tide-mode, but we're in web-mode, so need to
-    ;; configure proper checkers
-
-    (setq flycheck-disabled-checkers nil)
-    (flycheck-add-next-checker 'tsx-tide 'javascript-eslint)
-
     (frontside-javascript--typescript-mode-hook)))
 
 

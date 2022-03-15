@@ -163,8 +163,6 @@ typescript-mode.el is very barebones, but the expectation around
 
   ;; use flycheck to highlight syntax errors.
   (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically
-        '(save idle-change new-line mode-enabled))
 
   (cond ((frontside-javascript--deno-project-p)
          (lsp))
